@@ -1,0 +1,310 @@
+% Sentinel: Utkrishta 2026, Challenge 2. The required 10-slide deck.
+% Build:  latexmk -xelatex sentinel.tex     Figures: python scripts/deck_figures.py
+% Team name and members: edit \teamname and \members in preamble.tex.
+\documentclass[aspectratio=169, 10pt]{beamer}
+\input{preamble}
+
+\begin{document}
+
+% =================================================================== 1. title
+\begin{frame}[plain]
+  \vspace*{0.5mm}
+  {\scriptsize\color{muted}UTKRISHTA 2026 \,·\, CHALLENGE 2 \,·\, ADAPTIVE TIME-SERIES ANOMALY DETECTION}\\[2.5mm]
+  {\fontsize{30}{32}\selectfont\bfseries Sentinel}\\[2mm]
+  {\large A live anomaly detector that learns what is \hl{rare} for each signal,\\[0.5mm]
+   and explains every alarm in one sentence.}\\[2.5mm]
+  \includegraphics{hero}\\[-0.5mm]
+  {\tiny\color{muted}AWS database CPU, streamed point by point: a spike and a later level shift, both caught
+   (\alarmmark). Grey bands: labelled anomaly windows.}\\[3mm]
+  \kpirow{0.594}{event-F1 on all 58 NAB series}{2.3×}{the best standard baseline}
+         {61\,µs}{per point, on one CPU core}{0}{false alarms on clean signals}
+  \vfill
+  {\small\bfseries\teamname}\hspace{4mm}{\small\color{ink2}\members}
+  \vspace*{0.5mm}
+\end{frame}
+
+% =================================================================== 2. problem
+\begin{frame}{Catch real failures early, without crying wolf}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.52\textwidth}
+      \includegraphics{machine}
+      \figcap{A temperature sensor inside an industrial machine, ending in a known system failure.
+              Grey: the 4 labelled anomaly windows.}
+    \column{0.45\textwidth}
+      \vspace{2mm}
+      \need{1}{Decide live}{Each value arrives once. Decide now, never peek ahead.}\\[5mm]
+      \need{2}{Fit every signal}{CPU, ad prices, taxis, tweets: no single threshold fits all.}\\[5mm]
+      \need{3}{Few alarms, each explained}{False alarms get ignored. Missed ones become outages.}
+  \end{columns}
+  \vfill
+  \bandnote{\textbf{How the challenge scores it:} event-F1 over labelled anomaly windows, precision,
+    recall, detection delay and runtime per point. Each alarm needs a score, a NORMAL/ANOMALOUS label
+    and evidence.}
+  \vspace{1mm}
+\end{frame}
+
+% =================================================================== 3. data, EDA, preprocessing
+\begin{frame}{A textbook 3σ rule raises 2,403 alarms for 116 real anomalies}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.37\textwidth}
+      \head{Numenta Anomaly Benchmark}
+      {\footnotesize\setlength{\tabcolsep}{3pt}
+      \begin{tabular}{@{}l r r r@{}}
+        \toprule
+        & series & points & windows\\
+        \midrule
+        Servers (AWS)  & 17 & 67,740  & 30\\
+        Tweets         & 10 & 158,631 & 33\\
+        Known failures & 7  & 69,561  & 19\\
+        Road traffic   & 7  & 15,664  & 14\\
+        Ads (hourly)   & 6  & 9,610   & 14\\
+        Artificial     & 11 & 44,352  & 6\\
+        \midrule
+        \textbf{Total} & \textbf{58} & \textbf{365,558} & \textbf{116}\\
+        \bottomrule
+      \end{tabular}}\\[3mm]
+      \head{What the EDA showed}
+      {\footnotesize\raggedright
+      \textbf{47 of 58} series have heavy tails.\\[0.6mm]
+      \textbf{18} have a daily rhythm.\\[0.6mm]
+      \textbf{Preprocessing:} stream in time order, no filling or rescaling.\par}
+    \column{0.6\textwidth}
+      \includegraphics{sigma_rule}
+      \figcap{Tweets about Facebook: 2 labelled anomalies. Over all 58 series the 3σ rule raises
+              2,403 alarms; Sentinel raises 106.}
+      \vspace{3mm}
+      \includegraphics{types_strip}
+      \figcap{All 116 windows by type. “Seen before”: an equally big spike came earlier, unlabelled.}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 4. system design
+\begin{frame}{One pass per point: experts, calibrated rarity, explained alarm}
+  \centering
+  \begin{tikzpicture}[font=\scriptsize, >={Stealth[length=1.5mm]},
+      box/.style={draw=line, fill=soft, rounded corners=2pt, inner sep=2.5pt},
+      exp/.style={box, text width=3.2cm, minimum height=0.52cm, align=left},
+      rare/.style={box, fill=white, minimum width=0.8cm, minimum height=0.52cm, align=center},
+      stage/.style={box, align=left},
+      a/.style={->, draw=ink2, line width=0.45pt}]
+    \node[stage, align=center, text width=1.3cm, minimum height=1.8cm] (in) at (0,0)
+      {\textbf{new value}\\[1pt]$x_t$\\[3pt]{\color{ink2}one at a time,\\no look-ahead}};
+    \foreach \y/\nm/\desc [count=\k] in {
+        1.28/level/{spikes and dips},
+        0.64/seasonal/{broken daily routine},
+        0/shift/{a new level that stays},
+        -0.64/volatility/{noise bursts, flat-lining},
+        -1.28/novelty/{never-seen shapes}} {
+      \node[exp] (e\k) at (2.8,\y) {\textbf{\nm}\hspace{1.2mm}{\color{ink2}\desc}};
+      \node[rare] (r\k) at (5.2,\y) {$p$};
+      \draw[a] (in.east) -- (e\k.west);
+      \draw[a] (e\k) -- (r\k);
+    }
+    \node[font=\tiny, color=ink2, align=center] at (5.2,1.88) {rarity\\(EVT tail)};
+    \draw[decorate, decoration={brace, amplitude=3pt}, draw=muted] (1.1,1.66) -- (4.5,1.66);
+    \node[font=\tiny, color=ink2] at (2.8,1.95) {first 300 points: learn normal, calibrate tails};
+    \node[box, circle, fill=white, align=center, inner sep=1pt, minimum size=1.2cm] (f) at (6.6,0)
+      {\textbf{fuse}\\$5\cdot\min p$};
+    \foreach \k in {1,...,5} \draw[a] (r\k.east) -- (f);
+    \node[stage, text width=2.75cm, minimum height=1.8cm] (al) at (9.05,0)
+      {\textbf{alarm logic}\\[1pt]{\color{ink2}score $=-\log_{10}p$\\alarm when score $\geq 5$\\(a $10^{-5}$ risk)\\CUSUM for slow build-up\\cooldown and re-learning}};
+    \draw[a] (f) -- (al);
+    \node[stage, fill=sblue!8, draw=sblue, text width=2.55cm, minimum height=1.8cm] (out) at (12.15,0)
+      {\textbf{output, per point}\\[1pt]{\color{ink2}anomaly score\\NORMAL / ANOMALOUS\\evidence sentence}};
+    \draw[a] (al) -- (out);
+  \end{tikzpicture}
+
+  \vspace{3mm}
+  \chip{strictly causal} \chip{O(1) state per expert} \chip{61 µs per point}
+  \chip{one configuration, 58 series} \chip{CSV + JSON + live demo}
+
+  \vspace{3.5mm}
+  \raggedright
+  {\footnotesize\color{ink2}\textbf{\color{ink}Features and windows.} Level scores the current point; seasonal
+  looks one day back; shift and volatility compare a 10-point with a 200-point average; novelty matches
+  the last 8 points against the previous 2,000 (a streaming matrix profile). Every point is scored
+  \emph{before} the experts learn from it.\par}
+\end{frame}
+
+% =================================================================== 5. adaptive threshold
+\begin{frame}{The threshold is a probability, not a number}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      \includegraphics{rarity_curves}
+      \figcap{One real spike in an hourly ad price, 111 noise units above normal. The old fit believed
+              such values were common and would only alarm at 690. With shrinkage: 79, so it is caught.}
+    \column{0.49\textwidth}
+      \head{Calibrated rarity, per signal, online}
+      {\footnotesize\raggedright Extreme scores get an extreme-value tail, refitted in O(1):\\[1.2mm]
+      \hspace*{3mm}$p=\Pr(S>s)\approx\frac{n_t}{n}\bigl(1+\gamma\,\frac{s-t}{\sigma}\bigr)^{-1/\gamma}$\\[1.2mm]
+      Alarm when $5\cdot\min_e p_e<10^{-5}$, on every signal.\par}
+      \vspace{2.5mm}
+      \head{\textcolor{sorange}{New:} shape shrinkage}
+      {\footnotesize\raggedright $\gamma\leftarrow\gamma\cdot\frac{n_t}{n_t+200}$: trust a heavy tail only
+      with evidence. Biggest-ever spikes caught: 31 → 37.\par}
+      \vspace{2.5mm}
+      \head{\textcolor{sorange}{New:} re-learning}
+      {\footnotesize\raggedright Still alarming after the cooldown? The normal has changed, so re-learn it.\par}
+      \vspace{1.2mm}
+      \includegraphics{relearn_strip}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 6. experiments
+\begin{frame}{15-run budget: one written hypothesis per run}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.49\textwidth}
+      \includegraphics{trajectory}
+      \figcap{Phase 1: v2 fixed tail learning, v3 added evidence accumulation, v4 the novelty expert,
+              v5 set the risk and dropped a “jump” expert after an ablation.}
+    \column{0.48\textwidth}
+      {\footnotesize\setlength{\tabcolsep}{3.5pt}
+      \begin{tabular}{@{}c l r l@{}}
+        \toprule
+        run & change & F1 & \\
+        \midrule
+        1 & reproduce v5 (reference)          & 0.551 & \\
+        2 & tail shrinkage, $n_0=100$         & 0.561 & \hl{kept}\\
+        3 & stronger shrinkage, $n_0=400$     & 0.544 & {\color{muted}dropped}\\
+        4 & + re-learning                     & 0.584 & \hl{kept}\\
+        5 & warm-up 300 → 200                 & 0.556 & {\color{muted}dropped}\\
+        6 & shrinkage $n_0=200$               & \textbf{0.594} & \hl{kept}\\
+        7 & shrinkage $n_0=400$               & 0.571 & {\color{muted}dropped}\\
+        \bottomrule
+      \end{tabular}}\\[3.5mm]
+      \head{Search strategy}
+      {\footnotesize\raggedright
+      \textbf{Analyse first:} ideas come from saved outputs, at no cost.\\[0.8mm]
+      \textbf{One rule:} keep a change only if F1 rises and more categories gain than lose.\\[0.8mm]
+      \textbf{Stop early:} 7 ideas rejected from the data alone; 8 runs left in reserve.\par}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 7. evaluation
+\begin{frame}{Evaluation: event-level scoring, checked on unseen categories}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.49\textwidth}
+      \begin{tikzpicture}[font=\scriptsize, x=1cm, y=1cm]
+        \fill[winfill] (0.9,0) rectangle (2.5,1.15);
+        \fill[winfill] (4.6,0) rectangle (6.2,1.15);
+        \draw[line, line width=0.4pt] (0,0) -- (7.0,0);
+        \draw[sblue, line width=0.7pt] (0,0.22) -- (1.5,0.22) -- (1.6,0.9) -- (1.7,0.22) -- (3.5,0.22)
+          -- (3.6,0.58) -- (3.7,0.22) -- (5.1,0.22) -- (5.3,0.4) -- (5.5,0.22) -- (7.0,0.22);
+        \fill[sblue] (1.5,1.13) -- (1.7,1.13) -- (1.6,0.97) -- cycle;
+        \fill[sred] (3.5,0.82) -- (3.7,0.82) -- (3.6,0.66) -- cycle;
+        \node[below, align=center] at (1.7,-0.02) {\textbf{detected}\\true positive};
+        \node[below, align=center, text=sred] at (3.6,-0.02) {\textbf{false alarm}\\false positive};
+        \node[below, align=center, text=ink2] at (5.4,-0.02) {\textbf{missed}\\false negative};
+      \end{tikzpicture}\\[2.5mm]
+      {\footnotesize\raggedright
+      \textbf{Precision:} share of alarms inside a window.\\
+      \textbf{Recall:} share of windows with at least one alarm.\\
+      \textbf{Delay:} first alarm minus the labelled anomaly point.\par}
+      \vspace{3mm}
+      \head{Validation}
+      {\footnotesize\raggedright
+      One configuration, all 58 series, strictly causal.\\[0.5mm]
+      Leave one category out across all runs: \textbf{0.594} held-out.\\[0.5mm]
+      The 5 anomaly-free series must stay silent: \textbf{0 alarms}.\\[0.5mm]
+      \textbf{No point adjustment:} with it, random alarms on 1\% of points score \textbf{0.92},
+      above our 0.82.\par}
+    \column{0.48\textwidth}
+      {\footnotesize\setlength{\tabcolsep}{4.5pt}
+      \begin{tabular}{@{}l r r r r@{}}
+        \toprule
+        category & windows & P & R & F1\\
+        \midrule
+        Server metrics (AWS) & 30 & 0.67 & 0.47 & 0.55\\
+        Tweet volume         & 33 & 0.57 & 0.76 & 0.65\\
+        Known failures       & 19 & 0.52 & 0.63 & 0.57\\
+        Road traffic         & 14 & 0.80 & 0.29 & 0.42\\
+        Online ads (hourly)  & 14 & 1.00 & 0.36 & 0.53\\
+        Artificial           & 6  & 1.00 & 0.83 & 0.91\\
+        \midrule
+        \textbf{All}         & \textbf{116} & \textbf{0.63} & \textbf{0.56} & \textbf{0.594}\\
+        \bottomrule
+      \end{tabular}}\\[3mm]
+      \includegraphics{delay_hist}
+      \figcap{Detection delay: the median first alarm lands \textbf{0 steps} after the labelled
+              anomaly point; 66\% within ±10 steps.}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 8. results
+\begin{frame}{0.594 event-F1: 2.3× the best baseline, at 61 µs per point}
+  \kpirow{0.594}{event-F1, all 58 series}{65\,/\,116}{anomaly windows found}
+         {61\,µs}{per point (p50); 121\,µs at p99}{0}{alarms on clean signals}
+  \vspace{3mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.56\textwidth}
+      {\footnotesize\setlength{\tabcolsep}{4pt}
+      \begin{tabular}{@{}l r r r r r@{}}
+        \toprule
+        method & F1 & P & R & false alarms & µs/pt\\
+        \midrule
+        \textbf{\color{sblue}Sentinel (ours)} & \textbf{0.594} & \textbf{0.63} & 0.56 & \textbf{39} & 61\\
+        Local Outlier Factor & 0.261 & 0.17 & 0.62 & 455 & 216\\
+        Isolation Forest     & 0.249 & 0.18 & 0.42 & 261 & 49\\
+        One-Class SVM        & 0.235 & 0.14 & 0.68 & 594 & 9\\
+        Rolling z-score      & 0.226 & 0.15 & 0.47 & 351 & 0.5\\
+        \bottomrule
+      \end{tabular}}
+      \figcap{Same data, same scoring. Each baseline got its best possible threshold, chosen with the
+              labels; Sentinel uses one fixed configuration. The baselines reach their recall only by
+              raising 7 to 15 times more false alarms.}
+    \column{0.41\textwidth}
+      \includegraphics{f1_bars}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 9. demo
+\begin{frame}{Every alarm arrives with its evidence}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.585\textwidth}
+      \includegraphics[width=\linewidth]{app_dashboard}
+      \figcap{Our Streamlit demo replaying tweets about CVS as a live stream: 3 of 3 anomaly windows
+              found; alarms (\alarmmark) on the signal; the score against the adaptive threshold.}
+    \column{0.395\textwidth}
+      \evidence{sblue}{LEVEL \,·\, 5 Mar 19:57 \,·\, score 8.5}{Value 50.00 is 99.4 scales above the learned
+        baseline 0.32 (normal band −1.18 to 1.82).}\\[2mm]
+      \evidence{sblue}{SHIFT \,·\, 26 Mar 14:07 \,·\, score 5.1}{Sustained level shift: recent mean 6.40 vs
+        baseline 0.43 (8.2 scales above).}\\[2mm]
+      \evidence{sblue}{NOVELTY \,·\, 14 Apr 21:02 \,·\, score 6.0}{The last 8 points form a pattern not seen
+        before: the closest past match (1,750 steps ago) differs by 11.40 per point.}\\[3mm]
+      {\scriptsize\color{ink2}\textbf{Same alarm in predictions.csv}\\[0.5mm]
+      {\tiny\texttt{2015-03-05 19:57:53 · 50.0 · score 8.525 · ANOMALOUS · level · "Value 50.00 is 99.4 …"}}\par}
+  \end{columns}
+\end{frame}
+
+% =================================================================== 10. limits, next, conclusion
+\begin{frame}{Where it still fails, and what comes next}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.49\textwidth}
+      \includegraphics{fp_example}
+      \figcap{Tweets about IBM. Most of our 39 false alarms are big bursts nobody labelled.}
+      \vspace{2.5mm}
+      \includegraphics{type_rates}
+      \figcap{“Seen before” spikes stay hard: rarity alone cannot tell them apart.}
+    \column{0.48\textwidth}
+      \head{Known limits}
+      {\footnotesize\raggedright
+      \textbf{Seen-before spikes:} 11 of 32 caught.\\[0.8mm]
+      \textbf{Short hourly series:} Ad Exchange recall 0.36.\\[0.8mm]
+      \textbf{First 300 points only learn:} 3 windows start there.\par}
+      \vspace{3mm}
+      \head{Next}
+      {\footnotesize\raggedright
+      \textbf{Operator feedback:} “not an anomaly” goes into the tail, so the pattern stops alarming.\\[0.8mm]
+      \textbf{Weekly and holiday rhythm} for demand signals.\\[0.8mm]
+      \textbf{Signals from one machine together:} CPU, disk and network.\par}
+      \vspace{4mm}
+      \begin{tikzpicture}
+        \node[fill=slate, text=white, text width=\dimexpr\linewidth-12pt\relax, inner sep=6pt,
+              align=left, font=\footnotesize] {\textbf{Sentinel} finds 65 of 116 anomalies with 63\%
+          precision, live at 61\,µs per point. Every alarm is held to the same 1-in-100,000 risk and
+          explained in one sentence.};
+      \end{tikzpicture}
+  \end{columns}
+\end{frame}
+
+\end{document}

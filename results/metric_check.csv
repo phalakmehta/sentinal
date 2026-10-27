@@ -1,0 +1,5 @@
+detector,event_f1,pointwise_f1,point_adjusted_f1,events
+Sentinel (run 6),0.594,0.045,0.823,106
+"random, 0.28% of points (our alarm rate)",0.146,0.005,0.765,1032
+"random, 1% of points",0.163,0.018,0.919,3600
+flag every point,0.945,0.168,0.168,58

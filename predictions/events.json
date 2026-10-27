@@ -1,0 +1,3720 @@
+[
+ {
+  "timestamp": "2014-04-11T00:00:00.000000000",
+  "value": 40.0,
+  "score": 11.7,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": 30.53,
+  "experts": {
+   "level": {
+    "z": 1.02,
+    "p": 0.964
+   },
+   "shift": {
+    "z": -0.73,
+    "p": 0.984
+   },
+   "volatility": {
+    "z": 0.84,
+    "p": 0.358
+   },
+   "novelty": {
+    "z": 5.56,
+    "p": 0.884
+   },
+   "seasonal": {
+    "z": 30.53,
+    "p": 3.98e-13
+   }
+  },
+  "info": {
+   "same_time_last_period": -21.4850740913,
+   "period_pts": 288
+  },
+  "explanation": "Value 40.00 breaks the repeating pattern: the same point one period earlier (288 steps) was -21.49.",
+  "event_id": 0,
+  "series": "artificialWithAnomaly/art_daily_flatmiddle.csv"
+ },
+ {
+  "timestamp": "2014-04-11T09:00:00.000000000",
+  "value": 39.3701276222,
+  "score": 7.4,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": -24.8,
+  "experts": {
+   "level": {
+    "z": 3.05,
+    "p": 0.83
+   },
+   "shift": {
+    "z": -0.51,
+    "p": 0.983
+   },
+   "volatility": {
+    "z": 0.35,
+    "p": 0.746
+   },
+   "novelty": {
+    "z": 5.78,
+    "p": 0.795
+   },
+   "seasonal": {
+    "z": -24.8,
+    "p": 7.99e-09
+   }
+  },
+  "info": {
+   "same_time_last_period": 74.3539669995,
+   "period_pts": 288
+  },
+  "explanation": "Value 39.37 breaks the repeating pattern: the same point one period earlier (288 steps) was 74.35.",
+  "event_id": 0,
+  "series": "artificialWithAnomaly/art_daily_jumpsdown.csv"
+ },
+ {
+  "timestamp": "2014-04-11T09:00:00.000000000",
+  "value": 127.882020134,
+  "score": 11.9,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": 38.19,
+  "experts": {
+   "level": {
+    "z": 17.89,
+    "p": 0.0652
+   },
+   "shift": {
+    "z": -0.11,
+    "p": 0.997
+   },
+   "volatility": {
+    "z": 1.66,
+    "p": 0.000479
+   },
+   "novelty": {
+    "z": 19.65,
+    "p": 0.35
+   },
+   "seasonal": {
+    "z": 38.19,
+    "p": 2.54e-13
+   }
+  },
+  "info": {
+   "same_time_last_period": 71.3444703568,
+   "period_pts": 288
+  },
+  "explanation": "Value 127.88 breaks the repeating pattern: the same point one period earlier (288 steps) was 71.34.",
+  "event_id": 0,
+  "series": "artificialWithAnomaly/art_daily_jumpsup.csv"
+ },
+ {
+  "timestamp": "2014-04-11T09:00:00.000000000",
+  "value": 21.3888616265,
+  "score": 8.97,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": -27.66,
+  "experts": {
+   "level": {
+    "z": -0.01,
+    "p": 1.0
+   },
+   "shift": {
+    "z": -0.58,
+    "p": 0.981
+   },
+   "volatility": {
+    "z": -0.54,
+    "p": 0.527
+   },
+   "novelty": {
+    "z": 0.57,
+    "p": 0.979
+   },
+   "seasonal": {
+    "z": -27.66,
+    "p": 2.17e-10
+   }
+  },
+  "info": {
+   "same_time_last_period": 62.0434838381,
+   "period_pts": 288
+  },
+  "explanation": "Value 21.39 breaks the repeating pattern: the same point one period earlier (288 steps) was 62.04.",
+  "event_id": 0,
+  "series": "artificialWithAnomaly/art_daily_nojump.csv"
+ },
+ {
+  "timestamp": "2014-04-11T03:25:00.000000000",
+  "value": 2.9073129019,
+  "score": 5.37,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 319.0,
+  "experts": {
+   "level": {
+    "z": 188.96,
+    "p": 0.0287
+   },
+   "shift": {
+    "z": 319.0,
+    "p": 0.000347
+   },
+   "volatility": {
+    "z": 5.05,
+    "p": 0.0153
+   },
+   "novelty": {
+    "z": 1.41,
+    "p": 0.00271
+   }
+  },
+  "info": {
+   "recent_mean": 1.382415573939592,
+   "baseline_mean": 0.0019348432856426785
+  },
+  "explanation": "Sustained level shift: recent mean 1.38 vs baseline 0.00193 (319.0 scales above).",
+  "event_id": 0,
+  "series": "artificialWithAnomaly/art_load_balancer_spikes.csv"
+ },
+ {
+  "timestamp": "2011-08-19T18:15:01.000000000",
+  "value": 5.49754000266,
+  "score": 10.33,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": 40.39,
+  "experts": {
+   "level": {
+    "z": 33.0,
+    "p": 1.69e-10
+   },
+   "shift": {
+    "z": 3.98,
+    "p": 7.41e-06
+   },
+   "volatility": {
+    "z": 1.75,
+    "p": 2.58e-07
+   },
+   "novelty": {
+    "z": 0.99,
+    "p": 3.24e-07
+   },
+   "seasonal": {
+    "z": 40.39,
+    "p": 9.29e-12
+   }
+  },
+  "info": {
+   "same_time_last_period": 0.712214878216,
+   "period_pts": 24
+  },
+  "explanation": "Value 5.50 breaks the repeating pattern: the same point one period earlier (24 steps) was 0.71.",
+  "event_id": 0,
+  "series": "realAdExchange/exchange-3_cpm_results.csv"
+ },
+ {
+  "timestamp": "2011-07-16T09:15:01.000000000",
+  "value": 1.93784313725,
+  "score": 23.94,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 157.33,
+  "experts": {
+   "level": {
+    "z": 157.33,
+    "p": 2.88e-25
+   },
+   "shift": {
+    "z": 12.94,
+    "p": 4.88e-20
+   },
+   "volatility": {
+    "z": 3.08,
+    "p": 7.29e-08
+   },
+   "novelty": {
+    "z": 0.62,
+    "p": 2.42e-14
+   }
+  },
+  "info": {
+   "expected": 0.05023849796135726,
+   "band": [
+    0.014245503135807587,
+    0.08623149278690692
+   ]
+  },
+  "explanation": "Value 1.94 is 157.3 scales above the learned baseline 0.05 (normal band 0.01 to 0.09).",
+  "event_id": 0,
+  "series": "realAdExchange/exchange-4_cpc_results.csv"
+ },
+ {
+  "timestamp": "2011-08-23T08:15:01.000000000",
+  "value": 3.12685185185,
+  "score": 7.67,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 140.26,
+  "experts": {
+   "level": {
+    "z": 140.26,
+    "p": 5.36e-09
+   },
+   "shift": {
+    "z": 13.46,
+    "p": 0.00131
+   },
+   "volatility": {
+    "z": 3.07,
+    "p": 0.00875
+   },
+   "novelty": {
+    "z": 0.42,
+    "p": 0.00116
+   }
+  },
+  "info": {
+   "expected": 0.09788216923321079,
+   "band": [
+    0.033095292082623295,
+    0.16266904638379828
+   ]
+  },
+  "explanation": "Value 3.13 is 140.3 scales above the learned baseline 0.10 (normal band 0.03 to 0.16).",
+  "event_id": 1,
+  "series": "realAdExchange/exchange-4_cpc_results.csv"
+ },
+ {
+  "timestamp": "2011-07-16T09:15:01.000000000",
+  "value": 8.41464452959,
+  "score": 11.69,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 80.46,
+  "experts": {
+   "level": {
+    "z": 80.46,
+    "p": 5.05e-13
+   },
+   "shift": {
+    "z": 6.22,
+    "p": 2.56e-08
+   },
+   "volatility": {
+    "z": 2.48,
+    "p": 0.00275
+   },
+   "novelty": {
+    "z": 2.06,
+    "p": 0.000372
+   }
+  },
+  "info": {
+   "expected": 0.39021537840915305,
+   "band": [
+    0.0910038822063225,
+    0.6894268746119836
+   ]
+  },
+  "explanation": "Value 8.41 is 80.5 scales above the learned baseline 0.39 (normal band 0.09 to 0.69).",
+  "event_id": 0,
+  "series": "realAdExchange/exchange-4_cpm_results.csv"
+ },
+ {
+  "timestamp": "2011-08-23T08:15:01.000000000",
+  "value": 14.1273427041,
+  "score": 6.04,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 111.49,
+  "experts": {
+   "level": {
+    "z": 111.49,
+    "p": 2.3e-07
+   },
+   "shift": {
+    "z": 10.51,
+    "p": 0.00111
+   },
+   "volatility": {
+    "z": 2.83,
+    "p": 0.0193
+   },
+   "novelty": {
+    "z": 1.61,
+    "p": 0.0105
+   }
+  },
+  "info": {
+   "expected": 0.5391578692219993,
+   "band": [
+    0.17351034810751098,
+    0.9048053903364875
+   ]
+  },
+  "explanation": "Value 14.13 is 111.5 scales above the learned baseline 0.54 (normal band 0.17 to 0.90).",
+  "event_id": 1,
+  "series": "realAdExchange/exchange-4_cpm_results.csv"
+ },
+ {
+  "timestamp": "2014-02-26T22:30:00.000000000",
+  "value": 0.132,
+  "score": 5.05,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 0.27,
+  "experts": {
+   "level": {
+    "z": 0.2,
+    "p": 0.95
+   },
+   "shift": {
+    "z": 5.17,
+    "p": 0.00857
+   },
+   "volatility": {
+    "z": 2.17,
+    "p": 0.00995
+   },
+   "novelty": {
+    "z": 0.27,
+    "p": 0.00053
+   }
+  },
+  "info": {
+   "nn_distance": 0.26504622238394565,
+   "nn_age": 1664,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1664 steps ago) differs by 0.27 per point.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_24ae8d.csv"
+ },
+ {
+  "timestamp": "2014-02-19T00:22:00.000000000",
+  "value": 62.056,
+  "score": 7.42,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 0.88,
+  "experts": {
+   "level": {
+    "z": 4.74,
+    "p": 1.92e-05
+   },
+   "shift": {
+    "z": 0.88,
+    "p": 1.2e-08
+   },
+   "volatility": {
+    "z": -0.05,
+    "p": 0.75
+   },
+   "novelty": {
+    "z": 5.23,
+    "p": 2.17e-08
+   }
+  },
+  "info": {
+   "recent_mean": 49.34257539100264,
+   "baseline_mean": 46.61551590612868
+  },
+  "explanation": "Sustained level shift: recent mean 49.34 vs baseline 46.62 (0.9 scales above).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_5f5533.csv"
+ },
+ {
+  "timestamp": "2014-02-24T19:37:00.000000000",
+  "value": 40.264,
+  "score": 5.8,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": -1.31,
+  "experts": {
+   "level": {
+    "z": -0.88,
+    "p": 0.64
+   },
+   "shift": {
+    "z": -1.31,
+    "p": 0.000354
+   },
+   "volatility": {
+    "z": 0.01,
+    "p": 0.963
+   },
+   "novelty": {
+    "z": 2.85,
+    "p": 0.00448
+   }
+  },
+  "info": {
+   "recent_mean": 40.2525346587202,
+   "baseline_mean": 43.29602210463836
+  },
+  "explanation": "Sustained level shift: recent mean 40.25 vs baseline 43.30 (1.3 scales below).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_5f5533.csv"
+ },
+ {
+  "timestamp": "2014-04-15T15:44:00.000000000",
+  "value": 76.874,
+  "score": 5.41,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -11.37,
+  "experts": {
+   "level": {
+    "z": -11.37,
+    "p": 9.77e-07
+   },
+   "shift": {
+    "z": -2.4,
+    "p": 0.007
+   },
+   "volatility": {
+    "z": 0.72,
+    "p": 0.0026
+   },
+   "novelty": {
+    "z": 3.54,
+    "p": 0.00014
+   }
+  },
+  "info": {
+   "expected": 93.2187149756597,
+   "band": [
+    88.9066380054883,
+    97.53079194583108
+   ]
+  },
+  "explanation": "Value 76.87 is 11.4 scales below the learned baseline 93.22 (normal band 88.91 to 97.53).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_825cc2.csv"
+ },
+ {
+  "timestamp": "2014-04-03T22:14:00.000000000",
+  "value": 34.594,
+  "score": 5.82,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 4.17,
+  "experts": {
+   "level": {
+    "z": -3.88,
+    "p": 0.00953
+   },
+   "shift": {
+    "z": -1.55,
+    "p": 0.000141
+   },
+   "volatility": {
+    "z": -0.13,
+    "p": 0.555
+   },
+   "novelty": {
+    "z": 4.17,
+    "p": 8.64e-05
+   }
+  },
+  "info": {
+   "nn_distance": 4.16781549495656,
+   "nn_age": 114,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (114 steps ago) differs by 4.17 per point.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_ac20cd.csv"
+ },
+ {
+  "timestamp": "2014-04-15T00:49:00.000000000",
+  "value": 88.20200000000001,
+  "score": 5.89,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 33.23,
+  "experts": {
+   "level": {
+    "z": 33.23,
+    "p": 3.22e-07
+   },
+   "shift": {
+    "z": 4.13,
+    "p": 0.0134
+   },
+   "volatility": {
+    "z": 1.36,
+    "p": 0.00473
+   },
+   "novelty": {
+    "z": 12.74,
+    "p": 0.00379
+   }
+  },
+  "info": {
+   "expected": 33.69627310536355,
+   "band": [
+    28.775319562640448,
+    38.61722664808666
+   ]
+  },
+  "explanation": "Value 88.20 is 33.2 scales above the learned baseline 33.70 (normal band 28.78 to 38.62).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/ec2_cpu_utilization_ac20cd.csv"
+ },
+ {
+  "timestamp": "2014-03-03T07:59:00.000000000",
+  "value": 2423190.0,
+  "score": 300.0,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 2423190000000000.0,
+  "experts": {
+   "level": {
+    "z": 2423190000000000.0,
+    "p": 0.0
+   },
+   "shift": {
+    "z": 242319000000000.0,
+    "p": 0.0
+   },
+   "volatility": {
+    "z": 33.12,
+    "p": 0.0
+   },
+   "novelty": {
+    "z": 856727.04,
+    "p": 0.0
+   }
+  },
+  "info": {
+   "expected": 0.0,
+   "band": [
+    -3.0000000000000004e-09,
+    3.0000000000000004e-09
+   ]
+  },
+  "explanation": "Value 2.42e+06 is 2423190000000000.0 scales above the learned baseline 0.00 (normal band -3e-09 to 3e-09).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_1ef3de.csv"
+ },
+ {
+  "timestamp": "2014-03-10T19:24:00.000000000",
+  "value": 61555500.0,
+  "score": 5.93,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 11438.49,
+  "experts": {
+   "level": {
+    "z": 3718.99,
+    "p": 0.444
+   },
+   "shift": {
+    "z": 11438.49,
+    "p": 7.39e-05
+   },
+   "volatility": {
+    "z": 9.38,
+    "p": 0.0133
+   },
+   "novelty": {
+    "z": 69157275.73,
+    "p": 0.00149
+   }
+  },
+  "info": {
+   "recent_mean": 53440677.227998815,
+   "baseline_mean": 1960.9617024217594
+  },
+  "explanation": "Sustained level shift: recent mean 5.34e+07 vs baseline 1,960.96 (11438.5 scales above).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_1ef3de.csv"
+ },
+ {
+  "timestamp": "2014-04-05T16:50:00.000000000",
+  "value": 369698000.0,
+  "score": 8.28,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 822.95,
+  "experts": {
+   "level": {
+    "z": 822.95,
+    "p": 1.3e-09
+   },
+   "shift": {
+    "z": 6.3,
+    "p": 0.00372
+   },
+   "volatility": {
+    "z": 2.28,
+    "p": 0.607
+   },
+   "novelty": {
+    "z": 2815237.14,
+    "p": 0.941
+   }
+  },
+  "info": {
+   "expected": 102275.69604844174,
+   "band": [
+    -1245049.1328567555,
+    1449600.5249536391
+   ]
+  },
+  "explanation": "Value 3.7e+08 is 823.0 scales above the learned baseline 1.02e+05 (normal band -1.25e+06 to 1.45e+06).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_c0d644.csv"
+ },
+ {
+  "timestamp": "2014-04-07T04:00:00.000000000",
+  "value": 20099900.0,
+  "score": 6.65,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 2651.33,
+  "experts": {
+   "level": {
+    "z": 2651.33,
+    "p": 5.62e-08
+   },
+   "shift": {
+    "z": 0.61,
+    "p": 0.818
+   },
+   "volatility": {
+    "z": 0.89,
+    "p": 0.865
+   },
+   "novelty": {
+    "z": 17677.67,
+    "p": 1.0
+   }
+  },
+  "info": {
+   "expected": 968.5626914986684,
+   "band": [
+    -21773.493265698362,
+    23710.618648695698
+   ]
+  },
+  "explanation": "Value 2.01e+07 is 2651.3 scales above the learned baseline 968.56 (normal band -21,773.49 to 23,710.62).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_c0d644.csv"
+ },
+ {
+  "timestamp": "2014-04-08T17:55:00.000000000",
+  "value": 119384000.0,
+  "score": 9.62,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 97154.83,
+  "experts": {
+   "level": {
+    "z": 97154.83,
+    "p": 2.94e-10
+   },
+   "shift": {
+    "z": 18.61,
+    "p": 0.0057
+   },
+   "volatility": {
+    "z": 4.29,
+    "p": 0.347
+   },
+   "novelty": {
+    "z": 10162063.26,
+    "p": 0.784
+   }
+  },
+  "info": {
+   "expected": 139.18024785562346,
+   "band": [
+    -3547.2197521443763,
+    3825.580247855623
+   ]
+  },
+  "explanation": "Value 1.19e+08 is 97154.8 scales above the learned baseline 139.18 (normal band -3,547.22 to 3,825.58).",
+  "event_id": 2,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_c0d644.csv"
+ },
+ {
+  "timestamp": "2014-04-11T18:15:00.000000000",
+  "value": 663439000.0,
+  "score": 5.39,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 324308975.98,
+  "experts": {
+   "level": {
+    "z": 24.23,
+    "p": 0.107
+   },
+   "shift": {
+    "z": 43.65,
+    "p": 0.0317
+   },
+   "volatility": {
+    "z": 4.33,
+    "p": 0.34
+   },
+   "novelty": {
+    "z": 324308975.98,
+    "p": 2.37e-05
+   }
+  },
+  "info": {
+   "nn_distance": 324308975.98263323,
+   "nn_age": 804,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (804 steps ago) differs by 3.24e+08 per point.",
+  "event_id": 3,
+  "series": "realAWSCloudwatch/ec2_disk_write_bytes_c0d644.csv"
+ },
+ {
+  "timestamp": "2014-04-15T16:44:00.000000000",
+  "value": 13429000.0,
+  "score": 5.16,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": 623.92,
+  "experts": {
+   "level": {
+    "z": 15.3,
+    "p": 0.884
+   },
+   "shift": {
+    "z": 3.42,
+    "p": 0.928
+   },
+   "volatility": {
+    "z": 0.72,
+    "p": 0.002
+   },
+   "novelty": {
+    "z": 3456006.78,
+    "p": 0.000798
+   },
+   "seasonal": {
+    "z": 623.92,
+    "p": 1.38e-06
+   }
+  },
+  "info": {
+   "same_time_last_period": 252028.0,
+   "period_pts": 288
+  },
+  "explanation": "Value 1.34e+07 breaks the repeating pattern: the same point one period earlier (288 steps) was 2.52e+05.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_network_in_257a54.csv"
+ },
+ {
+  "timestamp": "2014-03-03T08:01:00.000000000",
+  "value": 154832.0,
+  "score": 300.0,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 745.62,
+  "experts": {
+   "level": {
+    "z": 7793.21,
+    "p": 9.65e-62
+   },
+   "shift": {
+    "z": 745.62,
+    "p": 0.0
+   },
+   "volatility": {
+    "z": 6.01,
+    "p": 3.72e-41
+   },
+   "novelty": {
+    "z": 54672.45,
+    "p": 0.0
+   }
+  },
+  "info": {
+   "recent_mean": 15547.31601137013,
+   "baseline_mean": 69.82152875027212
+  },
+  "explanation": "Sustained level shift: recent mean 15,547.32 vs baseline 69.82 (745.6 scales above).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/ec2_network_in_5abac7.csv"
+ },
+ {
+  "timestamp": "2014-03-10T19:21:00.000000000",
+  "value": 6488650.0,
+  "score": 5.98,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 3272521.4,
+  "experts": {
+   "level": {
+    "z": 38378.87,
+    "p": 0.0103
+   },
+   "shift": {
+    "z": 16519.15,
+    "p": 0.083
+   },
+   "volatility": {
+    "z": 9.74,
+    "p": 0.0338
+   },
+   "novelty": {
+    "z": 3272521.4,
+    "p": 9.84e-05
+   }
+  },
+  "info": {
+   "nn_distance": 3272521.396214366,
+   "nn_age": 1391,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1391 steps ago) differs by 3.27e+06 per point.",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/ec2_network_in_5abac7.csv"
+ },
+ {
+  "timestamp": "2014-04-19T10:09:00.000000000",
+  "value": 17.0,
+  "score": 5.41,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": -1.0,
+  "experts": {
+   "level": {
+    "z": -0.71,
+    "p": 0.778
+   },
+   "shift": {
+    "z": -0.59,
+    "p": 0.532
+   },
+   "volatility": {
+    "z": -1.0,
+    "p": 0.000489
+   },
+   "novelty": {
+    "z": 11.62,
+    "p": 0.818
+   }
+  },
+  "info": {
+   "recent_volatility": 17.028075185460576,
+   "baseline_volatility": 46.37713192291962
+  },
+  "explanation": "Signal went unusually flat: volatility is 0.37x its baseline.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/elb_request_count_8c0756.csv"
+ },
+ {
+  "timestamp": "2014-04-22T19:49:00.000000000",
+  "value": 338.0,
+  "score": 5.7,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 2.77,
+  "experts": {
+   "level": {
+    "z": 4.54,
+    "p": 0.0108
+   },
+   "shift": {
+    "z": 2.77,
+    "p": 0.000104
+   },
+   "volatility": {
+    "z": 0.86,
+    "p": 0.00487
+   },
+   "novelty": {
+    "z": 127.04,
+    "p": 0.000645
+   }
+  },
+  "info": {
+   "recent_mean": 185.414770703255,
+   "baseline_mean": 63.03103822897832
+  },
+  "explanation": "Sustained level shift: recent mean 185.41 vs baseline 63.03 (2.8 scales above).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/elb_request_count_8c0756.csv"
+ },
+ {
+  "timestamp": "2014-01-29T00:55:00.000000000",
+  "value": 1.006,
+  "score": 5.81,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 18.32,
+  "experts": {
+   "level": {
+    "z": -16.97,
+    "p": 0.0139
+   },
+   "shift": {
+    "z": -5.21,
+    "p": 0.211
+   },
+   "volatility": {
+    "z": 1.42,
+    "p": 0.388
+   },
+   "novelty": {
+    "z": 18.32,
+    "p": 1.93e-05
+   }
+  },
+  "info": {
+   "nn_distance": 18.324156504666185,
+   "nn_age": 910,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (910 steps ago) differs by 18.32 per point.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/grok_asg_anomaly.csv"
+ },
+ {
+  "timestamp": "2014-02-25T07:15:00.000000000",
+  "value": 25.1033,
+  "score": 31.32,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 92.47,
+  "experts": {
+   "level": {
+    "z": 92.47,
+    "p": 1.2e-32
+   },
+   "shift": {
+    "z": 8.15,
+    "p": 4.53e-31
+   },
+   "volatility": {
+    "z": 1.79,
+    "p": 3.72e-08
+   },
+   "novelty": {
+    "z": 6.1,
+    "p": 1.41e-32
+   }
+  },
+  "info": {
+   "expected": 5.984184785535937,
+   "band": [
+    5.363882038262814,
+    6.60448753280906
+   ]
+  },
+  "explanation": "Value 25.10 is 92.5 scales above the learned baseline 5.98 (normal band 5.36 to 6.60).",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/rds_cpu_utilization_cc0c53.csv"
+ },
+ {
+  "timestamp": "2014-04-13T06:52:00.000000000",
+  "value": 76.23,
+  "score": 129.08,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 21.3,
+  "experts": {
+   "level": {
+    "z": 174.19,
+    "p": 3.75e-27
+   },
+   "shift": {
+    "z": 17.28,
+    "p": 2.49e-121
+   },
+   "volatility": {
+    "z": 2.48,
+    "p": 5.7e-09
+   },
+   "novelty": {
+    "z": 21.3,
+    "p": 2.09e-130
+   }
+  },
+  "info": {
+   "nn_distance": 21.30303605122988,
+   "nn_age": 852,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (852 steps ago) differs by 21.30 per point.",
+  "event_id": 0,
+  "series": "realAWSCloudwatch/rds_cpu_utilization_e47b3b.csv"
+ },
+ {
+  "timestamp": "2014-04-18T23:37:00.000000000",
+  "value": 27.405,
+  "score": 6.22,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 16.82,
+  "experts": {
+   "level": {
+    "z": 16.82,
+    "p": 3.2e-05
+   },
+   "shift": {
+    "z": 4.99,
+    "p": 0.00822
+   },
+   "volatility": {
+    "z": 0.67,
+    "p": 0.0259
+   },
+   "novelty": {
+    "z": 5.11,
+    "p": 0.000109
+   }
+  },
+  "info": {
+   "expected": 17.162059019205195,
+   "band": [
+    15.334858533499485,
+    18.989259504910905
+   ]
+  },
+  "explanation": "Value 27.41 is 16.8 scales above the learned baseline 17.16 (normal band 15.33 to 18.99).",
+  "event_id": 1,
+  "series": "realAWSCloudwatch/rds_cpu_utilization_e47b3b.csv"
+ },
+ {
+  "timestamp": "2013-08-06T21:00:00.000000000",
+  "value": 74.76223447,
+  "score": 6.18,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": 1.09,
+  "experts": {
+   "level": {
+    "z": 1.78,
+    "p": 0.297
+   },
+   "shift": {
+    "z": 0.13,
+    "p": 0.958
+   },
+   "volatility": {
+    "z": 1.09,
+    "p": 1.34e-07
+   },
+   "novelty": {
+    "z": 2.37,
+    "p": 0.00141
+   },
+   "seasonal": {
+    "z": 0.56,
+    "p": 0.814
+   }
+  },
+  "info": {
+   "recent_volatility": 2.308349960223034,
+   "baseline_volatility": 0.775746309424947
+  },
+  "explanation": "Noise burst: step-to-step volatility is 3.0x its baseline.",
+  "event_id": 0,
+  "series": "realKnownCause/ambient_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2013-12-22T02:00:00.000000000",
+  "value": 83.00863385,
+  "score": 5.03,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 4.07,
+  "experts": {
+   "level": {
+    "z": 3.12,
+    "p": 0.00841
+   },
+   "shift": {
+    "z": 3.27,
+    "p": 0.00156
+   },
+   "volatility": {
+    "z": 0.2,
+    "p": 0.472
+   },
+   "novelty": {
+    "z": 4.07,
+    "p": 0.000166
+   },
+   "seasonal": {
+    "z": 1.36,
+    "p": 0.538
+   }
+  },
+  "info": {
+   "nn_distance": 4.067357451311804,
+   "nn_age": 548,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (548 steps ago) differs by 4.07 per point.",
+  "event_id": 1,
+  "series": "realKnownCause/ambient_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-05-23T21:29:00.000000000",
+  "value": 47.6455,
+  "score": 5.87,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 30.24,
+  "experts": {
+   "level": {
+    "z": 0.28,
+    "p": 0.941
+   },
+   "shift": {
+    "z": 1.37,
+    "p": 0.015
+   },
+   "volatility": {
+    "z": 0.06,
+    "p": 0.914
+   },
+   "novelty": {
+    "z": 30.24,
+    "p": 0.000208
+   },
+   "seasonal": {
+    "z": 9.86,
+    "p": 0.0486
+   }
+  },
+  "info": {
+   "nn_distance": 30.236205246153162,
+   "nn_age": 59,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (59 steps ago) differs by 30.24 per point.",
+  "event_id": 0,
+  "series": "realKnownCause/cpu_utilization_asg_misconfiguration.csv"
+ },
+ {
+  "timestamp": "2014-05-30T00:19:00.000000000",
+  "value": 56.7505,
+  "score": 5.72,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 2.86,
+  "experts": {
+   "level": {
+    "z": 2.2,
+    "p": 0.536
+   },
+   "shift": {
+    "z": 2.86,
+    "p": 4.06e-05
+   },
+   "volatility": {
+    "z": 0.46,
+    "p": 0.367
+   },
+   "novelty": {
+    "z": 8.13,
+    "p": 0.00727
+   },
+   "seasonal": {
+    "z": 12.65,
+    "p": 0.0269
+   }
+  },
+  "info": {
+   "recent_mean": 54.68184501661581,
+   "baseline_mean": 35.658709064712895
+  },
+  "explanation": "Sustained level shift: recent mean 54.68 vs baseline 35.66 (2.9 scales above).",
+  "event_id": 1,
+  "series": "realKnownCause/cpu_utilization_asg_misconfiguration.csv"
+ },
+ {
+  "timestamp": "2014-06-10T20:54:00.000000000",
+  "value": 100.0,
+  "score": 6.8,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 3.81,
+  "experts": {
+   "level": {
+    "z": 5.49,
+    "p": 0.0515
+   },
+   "shift": {
+    "z": 3.81,
+    "p": 2.2e-05
+   },
+   "volatility": {
+    "z": 0.51,
+    "p": 0.3
+   },
+   "novelty": {
+    "z": 36.05,
+    "p": 9.46e-05
+   },
+   "seasonal": {
+    "z": 27.76,
+    "p": 0.00242
+   }
+  },
+  "info": {
+   "recent_mean": 64.81848633858026,
+   "baseline_mean": 36.65067166705978
+  },
+  "explanation": "Sustained level shift: recent mean 64.82 vs baseline 36.65 (3.8 scales above).",
+  "event_id": 2,
+  "series": "realKnownCause/cpu_utilization_asg_misconfiguration.csv"
+ },
+ {
+  "timestamp": "2014-07-14T22:49:00.000000000",
+  "value": 12.199000000000002,
+  "score": 5.36,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": -1.56,
+  "experts": {
+   "level": {
+    "z": -1.4,
+    "p": 0.702
+   },
+   "shift": {
+    "z": -2.41,
+    "p": 0.000948
+   },
+   "volatility": {
+    "z": -1.56,
+    "p": 0.000329
+   },
+   "novelty": {
+    "z": 2.67,
+    "p": 0.269
+   },
+   "seasonal": {
+    "z": -1.25,
+    "p": 0.872
+   }
+  },
+  "info": {
+   "recent_volatility": 2.479970809059335,
+   "baseline_volatility": 11.7942988489638
+  },
+  "explanation": "Signal went unusually flat: volatility is 0.21x its baseline.",
+  "event_id": 3,
+  "series": "realKnownCause/cpu_utilization_asg_misconfiguration.csv"
+ },
+ {
+  "timestamp": "2014-03-10T01:36:00.000000000",
+  "value": 51.198,
+  "score": 6.28,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 2.15,
+  "experts": {
+   "level": {
+    "z": 4.22,
+    "p": 0.00313
+   },
+   "shift": {
+    "z": 1.12,
+    "p": 0.000201
+   },
+   "volatility": {
+    "z": 0.13,
+    "p": 0.665
+   },
+   "novelty": {
+    "z": 2.15,
+    "p": 5.25e-05
+   }
+  },
+  "info": {
+   "nn_distance": 2.146567725463144,
+   "nn_age": 77,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (77 steps ago) differs by 2.15 per point.",
+  "event_id": 0,
+  "series": "realKnownCause/ec2_request_latency_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-03-14T09:06:00.000000000",
+  "value": 30.482,
+  "score": 6.17,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 3.57,
+  "experts": {
+   "level": {
+    "z": -10.07,
+    "p": 2.74e-07
+   },
+   "shift": {
+    "z": -1.34,
+    "p": 0.017
+   },
+   "volatility": {
+    "z": 0.35,
+    "p": 0.0759
+   },
+   "novelty": {
+    "z": 3.57,
+    "p": 1.68e-07
+   }
+  },
+  "info": {
+   "nn_distance": 3.5707620335160946,
+   "nn_age": 461,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (461 steps ago) differs by 3.57 per point.",
+  "event_id": 1,
+  "series": "realKnownCause/ec2_request_latency_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-03-18T22:36:00.000000000",
+  "value": 65.68,
+  "score": 5.58,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 12.22,
+  "experts": {
+   "level": {
+    "z": 12.22,
+    "p": 6.62e-07
+   },
+   "shift": {
+    "z": 1.54,
+    "p": 0.00553
+   },
+   "volatility": {
+    "z": 0.7,
+    "p": 0.002
+   },
+   "novelty": {
+    "z": 5.68,
+    "p": 1.45e-05
+   }
+  },
+  "info": {
+   "expected": 45.7120826450702,
+   "band": [
+    40.8114530276701,
+    50.612712262470296
+   ]
+  },
+  "explanation": "Value 65.68 is 12.2 scales above the learned baseline 45.71 (normal band 40.81 to 50.61).",
+  "event_id": 2,
+  "series": "realKnownCause/ec2_request_latency_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-03-21T03:11:00.000000000",
+  "value": 28.052,
+  "score": 5.1,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -10.81,
+  "experts": {
+   "level": {
+    "z": -10.81,
+    "p": 8.5e-05
+   },
+   "shift": {
+    "z": -1.54,
+    "p": 0.00432
+   },
+   "volatility": {
+    "z": 1.3,
+    "p": 0.000253
+   },
+   "novelty": {
+    "z": 5.6,
+    "p": 0.000934
+   }
+  },
+  "info": {
+   "expected": 45.39376209291069,
+   "band": [
+    40.58087633695967,
+    50.206647848861714
+   ]
+  },
+  "explanation": "Value 28.05 is 10.8 scales below the learned baseline 45.39 (normal band 40.58 to 50.21).",
+  "event_id": 3,
+  "series": "realKnownCause/ec2_request_latency_system_failure.csv"
+ },
+ {
+  "timestamp": "2013-12-10T22:45:00.000000000",
+  "value": 76.1408429,
+  "score": 5.15,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 6.1,
+  "experts": {
+   "level": {
+    "z": 6.1,
+    "p": 2.18e-05
+   },
+   "shift": {
+    "z": 0.43,
+    "p": 0.831
+   },
+   "volatility": {
+    "z": 0.72,
+    "p": 0.000646
+   },
+   "novelty": {
+    "z": 1.08,
+    "p": 0.639
+   }
+  },
+  "info": {
+   "expected": 55.69467064547224,
+   "band": [
+    45.64389082999118,
+    65.74545046095331
+   ]
+  },
+  "explanation": "Value 76.14 is 6.1 scales above the learned baseline 55.69 (normal band 45.64 to 65.75).",
+  "event_id": 0,
+  "series": "realKnownCause/machine_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2013-12-15T21:00:00.000000000",
+  "value": 85.13721252,
+  "score": 5.14,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -5.48,
+  "experts": {
+   "level": {
+    "z": -5.48,
+    "p": 0.000699
+   },
+   "shift": {
+    "z": -3.59,
+    "p": 0.00666
+   },
+   "volatility": {
+    "z": 0.22,
+    "p": 0.397
+   },
+   "novelty": {
+    "z": 1.97,
+    "p": 0.34
+   }
+  },
+  "info": {
+   "expected": 98.28456476935,
+   "band": [
+    91.08849008153221,
+    105.48063945716778
+   ]
+  },
+  "explanation": "Value 85.14 is 5.5 scales below the learned baseline 98.28 (normal band 91.09 to 105.48).",
+  "event_id": 1,
+  "series": "realKnownCause/machine_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-01-12T08:30:00.000000000",
+  "value": 82.10022740000002,
+  "score": 6.14,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -6.31,
+  "experts": {
+   "level": {
+    "z": -6.31,
+    "p": 0.000143
+   },
+   "shift": {
+    "z": -1.31,
+    "p": 0.49
+   },
+   "volatility": {
+    "z": 0.47,
+    "p": 0.0213
+   },
+   "novelty": {
+    "z": 2.51,
+    "p": 0.159
+   }
+  },
+  "info": {
+   "expected": 98.32189516519233,
+   "band": [
+    90.60378819914975,
+    106.04000213123491
+   ]
+  },
+  "explanation": "Value 82.10 is 6.3 scales below the learned baseline 98.32 (normal band 90.60 to 106.04).",
+  "event_id": 2,
+  "series": "realKnownCause/machine_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-02-03T00:15:00.000000000",
+  "value": 75.77023043,
+  "score": 5.92,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -7.02,
+  "experts": {
+   "level": {
+    "z": -7.02,
+    "p": 0.000157
+   },
+   "shift": {
+    "z": -1.45,
+    "p": 0.435
+   },
+   "volatility": {
+    "z": 0.47,
+    "p": 0.0203
+   },
+   "novelty": {
+    "z": 2.69,
+    "p": 0.0957
+   },
+   "seasonal": {
+    "z": -4.58,
+    "p": 0.00206
+   }
+  },
+  "info": {
+   "expected": 92.38043768152762,
+   "band": [
+    85.2777539773639,
+    99.48312138569135
+   ]
+  },
+  "explanation": "Value 75.77 is 7.0 scales below the learned baseline 92.38 (normal band 85.28 to 99.48).",
+  "event_id": 3,
+  "series": "realKnownCause/machine_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-02-09T12:00:00.000000000",
+  "value": 53.13574860000001,
+  "score": 6.1,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 16.8,
+  "experts": {
+   "level": {
+    "z": 16.8,
+    "p": 4.12e-07
+   },
+   "shift": {
+    "z": -0.19,
+    "p": 0.927
+   },
+   "volatility": {
+    "z": 1.14,
+    "p": 0.000439
+   },
+   "novelty": {
+    "z": 7.31,
+    "p": 0.00245
+   },
+   "seasonal": {
+    "z": 5.47,
+    "p": 0.000744
+   }
+  },
+  "info": {
+   "expected": 31.4436964703807,
+   "band": [
+    27.56966476678996,
+    35.31772817397144
+   ]
+  },
+  "explanation": "Value 53.14 is 16.8 scales above the learned baseline 31.44 (normal band 27.57 to 35.32).",
+  "event_id": 4,
+  "series": "realKnownCause/machine_temperature_system_failure.csv"
+ },
+ {
+  "timestamp": "2014-11-02T01:00:00.000000000",
+  "value": 39197.0,
+  "score": 7.36,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 4291.33,
+  "experts": {
+   "level": {
+    "z": 3.17,
+    "p": 0.000179
+   },
+   "shift": {
+    "z": 1.4,
+    "p": 0.25
+   },
+   "volatility": {
+    "z": 0.68,
+    "p": 0.00337
+   },
+   "novelty": {
+    "z": 4291.33,
+    "p": 8.7e-09
+   },
+   "seasonal": {
+    "z": 4.42,
+    "p": 0.0332
+   }
+  },
+  "info": {
+   "nn_distance": 4291.333650510061,
+   "nn_age": 675,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (675 steps ago) differs by 4,291.33 per point.",
+  "event_id": 0,
+  "series": "realKnownCause/nyc_taxi.csv"
+ },
+ {
+  "timestamp": "2015-01-27T03:30:00.000000000",
+  "value": 11.0,
+  "score": 5.22,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": -1.39,
+  "experts": {
+   "level": {
+    "z": -1.4,
+    "p": 0.455
+   },
+   "shift": {
+    "z": -1.78,
+    "p": 0.0424
+   },
+   "volatility": {
+    "z": -1.39,
+    "p": 6.07e-05
+   },
+   "novelty": {
+    "z": 1939.98,
+    "p": 0.234
+   },
+   "seasonal": {
+    "z": 0.51,
+    "p": 0.884
+   }
+  },
+  "info": {
+   "recent_volatility": 290.7344879965242,
+   "baseline_volatility": 1172.126410630724
+  },
+  "explanation": "Signal went unusually flat: volatility is 0.25x its baseline.",
+  "event_id": 1,
+  "series": "realKnownCause/nyc_taxi.csv"
+ },
+ {
+  "timestamp": "2014-07-17T08:30:00.000000000",
+  "value": 0.077423356,
+  "score": 11.82,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 438.29,
+  "experts": {
+   "level": {
+    "z": 438.29,
+    "p": 3.76e-13
+   },
+   "shift": {
+    "z": 0.17,
+    "p": 0.949
+   },
+   "volatility": {
+    "z": 1.5,
+    "p": 0.454
+   },
+   "novelty": {
+    "z": 0.0,
+    "p": 0.997
+   }
+  },
+  "info": {
+   "expected": 2.606886870122686e-05,
+   "band": [
+    -0.0005037042788501951,
+    0.0005558420162526487
+   ]
+  },
+  "explanation": "Value 0.08 is 438.3 scales above the learned baseline 2.61e-05 (normal band -0.000504 to 0.000556).",
+  "event_id": 0,
+  "series": "realKnownCause/rogue_agent_key_hold.csv"
+ },
+ {
+  "timestamp": "2014-07-10T20:35:00.000000000",
+  "value": 288.207531,
+  "score": 20.62,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 27641.01,
+  "experts": {
+   "level": {
+    "z": 27641.01,
+    "p": 6.06e-22
+   },
+   "shift": {
+    "z": 307.24,
+    "p": 3.68e-18
+   },
+   "volatility": {
+    "z": 6.81,
+    "p": 9.64e-06
+   },
+   "novelty": {
+    "z": 84.13,
+    "p": 1.93e-14
+   }
+  },
+  "info": {
+   "expected": 0.0029868171039629304,
+   "band": [
+    -0.028293286459073273,
+    0.034266920666999136
+   ]
+  },
+  "explanation": "Value 288.21 is 27641.0 scales above the learned baseline 0.00299 (normal band -0.03 to 0.03).",
+  "event_id": 0,
+  "series": "realKnownCause/rogue_agent_key_updown.csv"
+ },
+ {
+  "timestamp": "2014-07-15T11:35:00.000000000",
+  "value": 50.88613288,
+  "score": 6.62,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 12188.95,
+  "experts": {
+   "level": {
+    "z": 12188.95,
+    "p": 5.97e-08
+   },
+   "shift": {
+    "z": 366.5,
+    "p": 5.13e-06
+   },
+   "volatility": {
+    "z": 7.16,
+    "p": 0.0126
+   },
+   "novelty": {
+    "z": 0.66,
+    "p": 0.612
+   }
+  },
+  "info": {
+   "expected": 0.0019362742063312294,
+   "band": [
+    -0.010587578293668869,
+    0.014460126706331329
+   ]
+  },
+  "explanation": "Value 50.89 is 12188.9 scales above the learned baseline 0.00194 (normal band -0.01 to 0.01).",
+  "event_id": 1,
+  "series": "realKnownCause/rogue_agent_key_updown.csv"
+ },
+ {
+  "timestamp": "2014-07-18T07:05:00.000000000",
+  "value": 0.0,
+  "score": 5.49,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 738.31,
+  "experts": {
+   "level": {
+    "z": -0.06,
+    "p": 1.0
+   },
+   "shift": {
+    "z": 738.31,
+    "p": 0.000121
+   },
+   "volatility": {
+    "z": 7.35,
+    "p": 0.0361
+   },
+   "novelty": {
+    "z": 3.16,
+    "p": 0.0253
+   }
+  },
+  "info": {
+   "recent_mean": 3.08294220813523,
+   "baseline_mean": 0.0007993677662692978
+  },
+  "explanation": "Sustained level shift: recent mean 3.08 vs baseline 0.000799 (738.3 scales above).",
+  "event_id": 2,
+  "series": "realKnownCause/rogue_agent_key_updown.csv"
+ },
+ {
+  "timestamp": "2014-07-20T06:20:00.000000000",
+  "value": 1.131145486,
+  "score": 5.04,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 654.22,
+  "experts": {
+   "level": {
+    "z": 270.49,
+    "p": 0.017
+   },
+   "shift": {
+    "z": 654.22,
+    "p": 0.000656
+   },
+   "volatility": {
+    "z": 6.74,
+    "p": 0.0438
+   },
+   "novelty": {
+    "z": 4.64,
+    "p": 0.0194
+   }
+  },
+  "info": {
+   "recent_mean": 2.731664834884166,
+   "baseline_mean": 0.0005564781770922762
+  },
+  "explanation": "Sustained level shift: recent mean 2.73 vs baseline 0.000556 (654.2 scales above).",
+  "event_id": 3,
+  "series": "realKnownCause/rogue_agent_key_updown.csv"
+ },
+ {
+  "timestamp": "2014-07-22T04:50:00.000000000",
+  "value": 33.71222774,
+  "score": 6.19,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 2761.01,
+  "experts": {
+   "level": {
+    "z": 3662.99,
+    "p": 0.00169
+   },
+   "shift": {
+    "z": 2761.01,
+    "p": 1.8e-05
+   },
+   "volatility": {
+    "z": 7.8,
+    "p": 0.0402
+   },
+   "novelty": {
+    "z": 13.26,
+    "p": 0.00538
+   }
+  },
+  "info": {
+   "recent_mean": 11.527545902986896,
+   "baseline_mean": 0.001368049353771135
+  },
+  "explanation": "Sustained level shift: recent mean 11.53 vs baseline 0.00137 (2761.0 scales above).",
+  "event_id": 4,
+  "series": "realKnownCause/rogue_agent_key_updown.csv"
+ },
+ {
+  "timestamp": "2015-09-16T08:09:00.000000000",
+  "value": 38.83,
+  "score": 9.15,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 9.81,
+  "experts": {
+   "level": {
+    "z": 8.0,
+    "p": 2.43e-05
+   },
+   "shift": {
+    "z": 2.96,
+    "p": 0.000193
+   },
+   "volatility": {
+    "z": 0.71,
+    "p": 0.0345
+   },
+   "novelty": {
+    "z": 9.81,
+    "p": 1.43e-08
+   }
+  },
+  "info": {
+   "nn_distance": 9.808811727217522,
+   "nn_age": 1989,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1989 steps ago) differs by 9.81 per point.",
+  "event_id": 0,
+  "series": "realTraffic/occupancy_t4013.csv"
+ },
+ {
+  "timestamp": "2015-09-17T07:10:00.000000000",
+  "value": 59.0,
+  "score": 5.21,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 12.29,
+  "experts": {
+   "level": {
+    "z": -2.55,
+    "p": 0.0421
+   },
+   "shift": {
+    "z": -1.49,
+    "p": 0.00956
+   },
+   "volatility": {
+    "z": 0.49,
+    "p": 0.0275
+   },
+   "novelty": {
+    "z": 12.29,
+    "p": 7.98e-05
+   }
+  },
+  "info": {
+   "nn_distance": 12.293290853144248,
+   "nn_age": 1473,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1473 steps ago) differs by 12.29 per point.",
+  "event_id": 0,
+  "series": "realTraffic/speed_6005.csv"
+ },
+ {
+  "timestamp": "2015-09-16T07:54:00.000000000",
+  "value": 25.0,
+  "score": 5.87,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": -17.57,
+  "experts": {
+   "level": {
+    "z": -17.57,
+    "p": 3.38e-07
+   },
+   "shift": {
+    "z": -1.7,
+    "p": 0.396
+   },
+   "volatility": {
+    "z": 0.71,
+    "p": 0.022
+   },
+   "novelty": {
+    "z": 8.32,
+    "p": 0.00433
+   }
+  },
+  "info": {
+   "expected": 63.10106913378552,
+   "band": [
+    56.59650376088635,
+    69.6056345066847
+   ]
+  },
+  "explanation": "Value 25.00 is 17.6 scales below the learned baseline 63.10 (normal band 56.60 to 69.61).",
+  "event_id": 0,
+  "series": "realTraffic/speed_t4013.csv"
+ },
+ {
+  "timestamp": "2015-09-01T10:36:00.000000000",
+  "value": 1974.0,
+  "score": 5.22,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 4.82,
+  "experts": {
+   "level": {
+    "z": 2.43,
+    "p": 0.0947
+   },
+   "shift": {
+    "z": 4.82,
+    "p": 0.00109
+   },
+   "volatility": {
+    "z": 0.87,
+    "p": 0.5
+   },
+   "novelty": {
+    "z": 345.11,
+    "p": 0.172
+   }
+  },
+  "info": {
+   "recent_mean": 1682.883982354875,
+   "baseline_mean": 405.1760588792957
+  },
+  "explanation": "Sustained level shift: recent mean 1,682.88 vs baseline 405.18 (4.8 scales above).",
+  "event_id": 0,
+  "series": "realTraffic/TravelTime_387.csv"
+ },
+ {
+  "timestamp": "2015-09-11T00:13:00.000000000",
+  "value": 4891.0,
+  "score": 6.08,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 41.75,
+  "experts": {
+   "level": {
+    "z": 41.75,
+    "p": 4.24e-05
+   },
+   "shift": {
+    "z": 5.17,
+    "p": 0.000956
+   },
+   "volatility": {
+    "z": 2.39,
+    "p": 0.0103
+   },
+   "novelty": {
+    "z": 1117.25,
+    "p": 0.00684
+   }
+  },
+  "info": {
+   "expected": 180.08548606409036,
+   "band": [
+    -158.44979447413564,
+    518.6207666023164
+   ]
+  },
+  "explanation": "Value 4,891.00 is 41.7 scales above the learned baseline 180.09 (normal band -158.45 to 518.62).",
+  "event_id": 1,
+  "series": "realTraffic/TravelTime_387.csv"
+ },
+ {
+  "timestamp": "2015-03-02T15:47:53.000000000",
+  "value": 116.0,
+  "score": 5.25,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": 1.54,
+  "experts": {
+   "level": {
+    "z": 4.11,
+    "p": 0.0316
+   },
+   "shift": {
+    "z": 5.03,
+    "p": 0.00867
+   },
+   "volatility": {
+    "z": 1.54,
+    "p": 0.000449
+   },
+   "novelty": {
+    "z": 38.47,
+    "p": 0.329
+   }
+  },
+  "info": {
+   "recent_volatility": 49.084033611368596,
+   "baseline_volatility": 10.528861342068437
+  },
+  "explanation": "Noise burst: step-to-step volatility is 4.7x its baseline.",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-03-03T21:02:53.000000000",
+  "value": 1698.0,
+  "score": 6.4,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 61.47,
+  "experts": {
+   "level": {
+    "z": 61.47,
+    "p": 1.01e-07
+   },
+   "shift": {
+    "z": 8.07,
+    "p": 0.00115
+   },
+   "volatility": {
+    "z": 2.39,
+    "p": 2.32e-05
+   },
+   "novelty": {
+    "z": 442.06,
+    "p": 0.000566
+   }
+  },
+  "info": {
+   "expected": 84.3756675204227,
+   "band": [
+    5.6271541817697255,
+    163.12418085907566
+   ]
+  },
+  "explanation": "Value 1,698.00 is 61.5 scales above the learned baseline 84.38 (normal band 5.63 to 163.12).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-03-14T01:37:53.000000000",
+  "value": 2365.0,
+  "score": 5.29,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 171.44,
+  "experts": {
+   "level": {
+    "z": 171.44,
+    "p": 1.28e-06
+   },
+   "shift": {
+    "z": 11.76,
+    "p": 0.00753
+   },
+   "volatility": {
+    "z": 2.91,
+    "p": 0.0072
+   },
+   "novelty": {
+    "z": 246.34,
+    "p": 0.0132
+   }
+  },
+  "info": {
+   "expected": 48.01789870758043,
+   "band": [
+    7.474274211844332,
+    88.56152320331653
+   ]
+  },
+  "explanation": "Value 2,365.00 is 171.4 scales above the learned baseline 48.02 (normal band 7.47 to 88.56).",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-03-16T03:02:53.000000000",
+  "value": 5249.0,
+  "score": 7.29,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 3493.1,
+  "experts": {
+   "level": {
+    "z": 21.99,
+    "p": 0.00766
+   },
+   "shift": {
+    "z": 52.08,
+    "p": 2.2e-05
+   },
+   "volatility": {
+    "z": 3.64,
+    "p": 0.00607
+   },
+   "novelty": {
+    "z": 3493.1,
+    "p": 8.77e-06
+   }
+  },
+  "info": {
+   "nn_distance": 3493.102328160456,
+   "nn_age": 1859,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1859 steps ago) differs by 3,493.10 per point.",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-03-30T17:57:53.000000000",
+  "value": 4791.0,
+  "score": 5.49,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 328.78,
+  "experts": {
+   "level": {
+    "z": 328.78,
+    "p": 8.05e-07
+   },
+   "shift": {
+    "z": 32.93,
+    "p": 0.000486
+   },
+   "volatility": {
+    "z": 3.56,
+    "p": 0.00273
+   },
+   "novelty": {
+    "z": 1316.77,
+    "p": 0.000556
+   }
+  },
+  "info": {
+   "expected": 43.19175336498222,
+   "band": [
+    -0.1300933794623873,
+    86.51360010942682
+   ]
+  },
+  "explanation": "Value 4,791.00 is 328.8 scales above the learned baseline 43.19 (normal band -0.13 to 86.51).",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-04-14T23:17:53.000000000",
+  "value": 11694.0,
+  "score": 5.82,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 6177.37,
+  "experts": {
+   "level": {
+    "z": 57.4,
+    "p": 0.00107
+   },
+   "shift": {
+    "z": 60.75,
+    "p": 0.000195
+   },
+   "volatility": {
+    "z": 3.74,
+    "p": 0.00282
+   },
+   "novelty": {
+    "z": 6177.37,
+    "p": 3.6e-05
+   }
+  },
+  "info": {
+   "nn_distance": 6177.365083512549,
+   "nn_age": 106,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (106 steps ago) differs by 6,177.37 per point.",
+  "event_id": 5,
+  "series": "realTweets/Twitter_volume_AAPL.csv"
+ },
+ {
+  "timestamp": "2015-03-01T09:42:53.000000000",
+  "value": 247.0,
+  "score": 6.36,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 15.38,
+  "experts": {
+   "level": {
+    "z": 15.38,
+    "p": 1.09e-07
+   },
+   "shift": {
+    "z": 0.37,
+    "p": 0.772
+   },
+   "volatility": {
+    "z": 0.91,
+    "p": 0.00157
+   },
+   "novelty": {
+    "z": 36.73,
+    "p": 0.000221
+   }
+  },
+  "info": {
+   "expected": 37.68289092621086,
+   "band": [
+    -3.1337428894082393,
+    78.49952474182996
+   ]
+  },
+  "explanation": "Value 247.00 is 15.4 scales above the learned baseline 37.68 (normal band -3.13 to 78.50).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_AMZN.csv"
+ },
+ {
+  "timestamp": "2015-03-03T17:12:53.000000000",
+  "value": 194.0,
+  "score": 5.12,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 2.96,
+  "experts": {
+   "level": {
+    "z": 7.77,
+    "p": 0.000916
+   },
+   "shift": {
+    "z": 2.96,
+    "p": 1.25e-05
+   },
+   "volatility": {
+    "z": 0.69,
+    "p": 0.0241
+   },
+   "novelty": {
+    "z": 59.04,
+    "p": 0.000576
+   }
+  },
+  "info": {
+   "recent_mean": 105.38521167824901,
+   "baseline_mean": 53.564492920650274
+  },
+  "explanation": "Sustained level shift: recent mean 105.39 vs baseline 53.56 (3.0 scales above).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_AMZN.csv"
+ },
+ {
+  "timestamp": "2015-03-05T19:47:53.000000000",
+  "value": 716.0,
+  "score": 6.42,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 30.83,
+  "experts": {
+   "level": {
+    "z": 30.83,
+    "p": 9.6e-08
+   },
+   "shift": {
+    "z": 4.53,
+    "p": 0.000914
+   },
+   "volatility": {
+    "z": 1.77,
+    "p": 2.81e-05
+   },
+   "novelty": {
+    "z": 161.81,
+    "p": 5.08e-05
+   }
+  },
+  "info": {
+   "expected": 76.86578761519759,
+   "band": [
+    14.670056965658524,
+    139.06151826473666
+   ]
+  },
+  "explanation": "Value 716.00 is 30.8 scales above the learned baseline 76.87 (normal band 14.67 to 139.06).",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_AMZN.csv"
+ },
+ {
+  "timestamp": "2015-03-11T20:57:53.000000000",
+  "value": 1673.0,
+  "score": 7.71,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 99.81,
+  "experts": {
+   "level": {
+    "z": 99.81,
+    "p": 4.93e-09
+   },
+   "shift": {
+    "z": 8.67,
+    "p": 5.62e-05
+   },
+   "volatility": {
+    "z": 2.68,
+    "p": 0.000942
+   },
+   "novelty": {
+    "z": 261.29,
+    "p": 0.000133
+   }
+  },
+  "info": {
+   "expected": 64.4612933220192,
+   "band": [
+    16.115522128195494,
+    112.80706451584291
+   ]
+  },
+  "explanation": "Value 1,673.00 is 99.8 scales above the learned baseline 64.46 (normal band 16.12 to 112.81).",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_AMZN.csv"
+ },
+ {
+  "timestamp": "2015-04-06T08:17:53.000000000",
+  "value": 605.0,
+  "score": 5.17,
+  "threshold": 5.0,
+  "expert": "seasonal",
+  "z": 38.43,
+  "experts": {
+   "level": {
+    "z": 40.3,
+    "p": 1.09e-05
+   },
+   "shift": {
+    "z": 5.93,
+    "p": 0.000474
+   },
+   "volatility": {
+    "z": 1.67,
+    "p": 0.00326
+   },
+   "novelty": {
+    "z": 163.49,
+    "p": 0.000573
+   },
+   "seasonal": {
+    "z": 38.43,
+    "p": 5.74e-06
+   }
+  },
+  "info": {
+   "same_time_last_period": 46.0,
+   "period_pts": 288
+  },
+  "explanation": "Value 605.00 breaks the repeating pattern: the same point one period earlier (288 steps) was 46.00.",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_AMZN.csv"
+ },
+ {
+  "timestamp": "2015-03-09T19:07:53.000000000",
+  "value": 35.0,
+  "score": 6.45,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 9.41,
+  "experts": {
+   "level": {
+    "z": 9.4,
+    "p": 0.000481
+   },
+   "shift": {
+    "z": 4.52,
+    "p": 2.45e-05
+   },
+   "volatility": {
+    "z": 1.14,
+    "p": 0.0256
+   },
+   "novelty": {
+    "z": 9.41,
+    "p": 8.94e-08
+   }
+  },
+  "info": {
+   "nn_distance": 9.40744386111339,
+   "nn_age": 1401,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1401 steps ago) differs by 9.41 per point.",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_CRM.csv"
+ },
+ {
+  "timestamp": "2015-03-19T23:07:53.000000000",
+  "value": 209.0,
+  "score": 10.85,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 47.58,
+  "experts": {
+   "level": {
+    "z": 47.58,
+    "p": 3.56e-12
+   },
+   "shift": {
+    "z": 7.86,
+    "p": 1.3e-05
+   },
+   "volatility": {
+    "z": 2.03,
+    "p": 0.000977
+   },
+   "novelty": {
+    "z": 66.49,
+    "p": 3.6e-11
+   }
+  },
+  "info": {
+   "expected": 7.201208708438456,
+   "band": [
+    -5.5238706298593065,
+    19.926288046736218
+   ]
+  },
+  "explanation": "Value 209.00 is 47.6 scales above the learned baseline 7.20 (normal band -5.52 to 19.93).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_CRM.csv"
+ },
+ {
+  "timestamp": "2015-03-04T14:22:53.000000000",
+  "value": 11.0,
+  "score": 5.26,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 21.53,
+  "experts": {
+   "level": {
+    "z": 21.53,
+    "p": 1.38e-06
+   },
+   "shift": {
+    "z": 2.45,
+    "p": 0.0136
+   },
+   "volatility": {
+    "z": 1.13,
+    "p": 0.0164
+   },
+   "novelty": {
+    "z": 1.87,
+    "p": 0.00813
+   }
+  },
+  "info": {
+   "expected": 0.23389342862619206,
+   "band": [
+    -1.266106571373808,
+    1.733893428626192
+   ]
+  },
+  "explanation": "Value 11.00 is 21.5 scales above the learned baseline 0.23 (normal band -1.27 to 1.73).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_CVS.csv"
+ },
+ {
+  "timestamp": "2015-03-05T19:57:53.000000000",
+  "value": 50.0,
+  "score": 8.52,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 99.36,
+  "experts": {
+   "level": {
+    "z": 99.36,
+    "p": 7.47e-10
+   },
+   "shift": {
+    "z": 10.33,
+    "p": 8.21e-05
+   },
+   "volatility": {
+    "z": 2.39,
+    "p": 0.00183
+   },
+   "novelty": {
+    "z": 10.78,
+    "p": 1.57e-05
+   }
+  },
+  "info": {
+   "expected": 0.31907422681767483,
+   "band": [
+    -1.180925773182325,
+    1.819074226817675
+   ]
+  },
+  "explanation": "Value 50.00 is 99.4 scales above the learned baseline 0.32 (normal band -1.18 to 1.82).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_CVS.csv"
+ },
+ {
+  "timestamp": "2015-03-20T01:12:53.000000000",
+  "value": 17.0,
+  "score": 5.01,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 33.49,
+  "experts": {
+   "level": {
+    "z": 33.49,
+    "p": 1.03e-05
+   },
+   "shift": {
+    "z": 6.43,
+    "p": 0.000774
+   },
+   "volatility": {
+    "z": 2.04,
+    "p": 0.00122
+   },
+   "novelty": {
+    "z": 5.55,
+    "p": 0.000854
+   }
+  },
+  "info": {
+   "expected": 0.25658727944782733,
+   "band": [
+    -1.2434127205521728,
+    1.7565872794478272
+   ]
+  },
+  "explanation": "Value 17.00 is 33.5 scales above the learned baseline 0.26 (normal band -1.24 to 1.76).",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_CVS.csv"
+ },
+ {
+  "timestamp": "2015-03-26T14:07:53.000000000",
+  "value": 9.0,
+  "score": 5.05,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 8.21,
+  "experts": {
+   "level": {
+    "z": 6.01,
+    "p": 0.00984
+   },
+   "shift": {
+    "z": 8.21,
+    "p": 0.000447
+   },
+   "volatility": {
+    "z": 1.26,
+    "p": 0.0115
+   },
+   "novelty": {
+    "z": 4.95,
+    "p": 0.00137
+   }
+  },
+  "info": {
+   "recent_mean": 6.40389059822273,
+   "baseline_mean": 0.4295207390497494
+  },
+  "explanation": "Sustained level shift: recent mean 6.40 vs baseline 0.43 (8.2 scales above).",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_CVS.csv"
+ },
+ {
+  "timestamp": "2015-04-14T21:02:53.000000000",
+  "value": 2.0,
+  "score": 6.05,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 11.4,
+  "experts": {
+   "level": {
+    "z": 1.34,
+    "p": 0.627
+   },
+   "shift": {
+    "z": 7.89,
+    "p": 0.000533
+   },
+   "volatility": {
+    "z": 2.63,
+    "p": 0.000211
+   },
+   "novelty": {
+    "z": 11.4,
+    "p": 7.07e-05
+   }
+  },
+  "info": {
+   "nn_distance": 11.40175425099138,
+   "nn_age": 1750,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1750 steps ago) differs by 11.40 per point.",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_CVS.csv"
+ },
+ {
+  "timestamp": "2015-03-16T07:07:53.000000000",
+  "value": 654.0,
+  "score": 6.22,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 87.01,
+  "experts": {
+   "level": {
+    "z": 87.01,
+    "p": 1.51e-07
+   },
+   "shift": {
+    "z": 8.31,
+    "p": 9.03e-05
+   },
+   "volatility": {
+    "z": 2.58,
+    "p": 0.000396
+   },
+   "novelty": {
+    "z": 182.74,
+    "p": 1.86e-07
+   }
+  },
+  "info": {
+   "expected": 13.284414391746393,
+   "band": [
+    -8.806852712182808,
+    35.37568149567559
+   ]
+  },
+  "explanation": "Value 654.00 is 87.0 scales above the learned baseline 13.28 (normal band -8.81 to 35.38).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_FB.csv"
+ },
+ {
+  "timestamp": "2015-04-03T17:42:53.000000000",
+  "value": 550.0,
+  "score": 5.9,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 101.6,
+  "experts": {
+   "level": {
+    "z": 101.6,
+    "p": 3.11e-07
+   },
+   "shift": {
+    "z": 9.25,
+    "p": 1.39e-05
+   },
+   "volatility": {
+    "z": 2.33,
+    "p": 0.00099
+   },
+   "novelty": {
+    "z": 118.45,
+    "p": 0.00058
+   }
+  },
+  "info": {
+   "expected": 14.716996055823167,
+   "band": [
+    -1.088092389861984,
+    30.522084501508317
+   ]
+  },
+  "explanation": "Value 550.00 is 101.6 scales above the learned baseline 14.72 (normal band -1.09 to 30.52).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_FB.csv"
+ },
+ {
+  "timestamp": "2015-03-11T08:17:53.000000000",
+  "value": 0.0,
+  "score": 5.87,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": -1.71,
+  "experts": {
+   "level": {
+    "z": -1.31,
+    "p": 0.649
+   },
+   "shift": {
+    "z": -1.92,
+    "p": 0.356
+   },
+   "volatility": {
+    "z": -1.71,
+    "p": 7.15e-05
+   },
+   "novelty": {
+    "z": 0.0,
+    "p": 1.0
+   }
+  },
+  "info": {
+   "recent_volatility": 1.02523107973917,
+   "baseline_volatility": 5.692577967246575
+  },
+  "explanation": "Signal went unusually flat: volatility is 0.18x its baseline.",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_GOOG.csv"
+ },
+ {
+  "timestamp": "2015-03-13T20:22:53.000000000",
+  "value": 452.0,
+  "score": 7.39,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 9.84,
+  "experts": {
+   "level": {
+    "z": 28.52,
+    "p": 2.15e-05
+   },
+   "shift": {
+    "z": 9.84,
+    "p": 8.47e-08
+   },
+   "volatility": {
+    "z": 2.26,
+    "p": 0.000316
+   },
+   "novelty": {
+    "z": 154.03,
+    "p": 1.17e-05
+   }
+  },
+  "info": {
+   "recent_mean": 121.11812713760887,
+   "baseline_mean": 23.005316344851114
+  },
+  "explanation": "Sustained level shift: recent mean 121.12 vs baseline 23.01 (9.8 scales above).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_GOOG.csv"
+ },
+ {
+  "timestamp": "2015-03-02T14:07:53.000000000",
+  "value": 7.0,
+  "score": 5.43,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 3.33,
+  "experts": {
+   "level": {
+    "z": 0.97,
+    "p": 0.64
+   },
+   "shift": {
+    "z": 3.33,
+    "p": 0.000491
+   },
+   "volatility": {
+    "z": 1.11,
+    "p": 0.0148
+   },
+   "novelty": {
+    "z": 5.21,
+    "p": 0.0136
+   }
+  },
+  "info": {
+   "recent_mean": 9.344987007657151,
+   "baseline_mean": 2.389448446593143
+  },
+  "explanation": "Sustained level shift: recent mean 9.34 vs baseline 2.39 (3.3 scales above).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-03-23T22:32:53.000000000",
+  "value": 72.0,
+  "score": 5.19,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 5.94,
+  "experts": {
+   "level": {
+    "z": 22.7,
+    "p": 4.07e-05
+   },
+   "shift": {
+    "z": 5.94,
+    "p": 6.75e-06
+   },
+   "volatility": {
+    "z": 1.55,
+    "p": 0.00113
+   },
+   "novelty": {
+    "z": 24.37,
+    "p": 2.35e-05
+   }
+  },
+  "info": {
+   "recent_mean": 17.972914491404293,
+   "baseline_mean": 3.455623026382598
+  },
+  "explanation": "Sustained level shift: recent mean 17.97 vs baseline 3.46 (5.9 scales above).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-03-31T12:27:53.000000000",
+  "value": 25.0,
+  "score": 5.71,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 4.67,
+  "experts": {
+   "level": {
+    "z": 3.07,
+    "p": 0.0375
+   },
+   "shift": {
+    "z": 4.67,
+    "p": 0.000188
+   },
+   "volatility": {
+    "z": 1.19,
+    "p": 0.00829
+   },
+   "novelty": {
+    "z": 9.43,
+    "p": 0.00275
+   }
+  },
+  "info": {
+   "recent_mean": 18.504613717629425,
+   "baseline_mean": 3.9462489555076883
+  },
+  "explanation": "Sustained level shift: recent mean 18.50 vs baseline 3.95 (4.7 scales above).",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-04-06T10:12:53.000000000",
+  "value": 5.0,
+  "score": 5.93,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": 2.02,
+  "experts": {
+   "level": {
+    "z": 1.57,
+    "p": 0.416
+   },
+   "shift": {
+    "z": 5.0,
+    "p": 0.000367
+   },
+   "volatility": {
+    "z": 2.02,
+    "p": 0.000275
+   },
+   "novelty": {
+    "z": 15.24,
+    "p": 0.000691
+   }
+  },
+  "info": {
+   "recent_volatility": 15.250899414193372,
+   "baseline_volatility": 2.026188023251942
+  },
+  "explanation": "Noise burst: step-to-step volatility is 7.5x its baseline.",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-04-16T21:37:53.000000000",
+  "value": 0.0,
+  "score": 5.07,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 11.85,
+  "experts": {
+   "level": {
+    "z": -1.56,
+    "p": 0.42
+   },
+   "shift": {
+    "z": 2.56,
+    "p": 0.0126
+   },
+   "volatility": {
+    "z": 1.56,
+    "p": 0.0029
+   },
+   "novelty": {
+    "z": 11.85,
+    "p": 0.0021
+   }
+  },
+  "info": {
+   "nn_distance": 11.853269591129697,
+   "nn_age": 440,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (440 steps ago) differs by 11.85 per point.",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-04-20T11:42:53.000000000",
+  "value": 2.0,
+  "score": 5.2,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": 1.84,
+  "experts": {
+   "level": {
+    "z": -0.5,
+    "p": 0.816
+   },
+   "shift": {
+    "z": 3.12,
+    "p": 0.00667
+   },
+   "volatility": {
+    "z": 1.84,
+    "p": 0.00132
+   },
+   "novelty": {
+    "z": 11.44,
+    "p": 0.00321
+   }
+  },
+  "info": {
+   "recent_volatility": 14.260199550445973,
+   "baseline_volatility": 2.265776116701791
+  },
+  "explanation": "Noise burst: step-to-step volatility is 6.3x its baseline.",
+  "event_id": 5,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-04-21T14:37:53.000000000",
+  "value": 10.0,
+  "score": 5.99,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 39.0,
+  "experts": {
+   "level": {
+    "z": -0.02,
+    "p": 0.994
+   },
+   "shift": {
+    "z": 5.79,
+    "p": 0.00107
+   },
+   "volatility": {
+    "z": 1.81,
+    "p": 0.00166
+   },
+   "novelty": {
+    "z": 39.0,
+    "p": 0.000162
+   }
+  },
+  "info": {
+   "nn_distance": 38.99839740297029,
+   "nn_age": 217,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (217 steps ago) differs by 39.00 per point.",
+  "event_id": 6,
+  "series": "realTweets/Twitter_volume_IBM.csv"
+ },
+ {
+  "timestamp": "2015-02-28T16:32:53.000000000",
+  "value": 122.0,
+  "score": 5.62,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 38.07,
+  "experts": {
+   "level": {
+    "z": 38.07,
+    "p": 6.03e-07
+   },
+   "shift": {
+    "z": 3.32,
+    "p": 0.0111
+   },
+   "volatility": {
+    "z": 1.37,
+    "p": 9.11e-05
+   },
+   "novelty": {
+    "z": 21.92,
+    "p": 0.00922
+   }
+  },
+  "info": {
+   "expected": 6.541443146135055,
+   "band": [
+    -2.5570239343054624,
+    15.639910226575573
+   ]
+  },
+  "explanation": "Value 122.00 is 38.1 scales above the learned baseline 6.54 (normal band -2.56 to 15.64).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-03-19T00:37:53.000000000",
+  "value": 34.0,
+  "score": 5.09,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 78.82,
+  "experts": {
+   "level": {
+    "z": 4.41,
+    "p": 0.0333
+   },
+   "shift": {
+    "z": 9.2,
+    "p": 0.000779
+   },
+   "volatility": {
+    "z": 2.55,
+    "p": 0.00147
+   },
+   "novelty": {
+    "z": 78.82,
+    "p": 0.00043
+   }
+  },
+  "info": {
+   "nn_distance": 78.8178279325179,
+   "nn_age": 1581,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (1581 steps ago) differs by 78.82 per point.",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-03-20T13:57:53.000000000",
+  "value": 91.0,
+  "score": 5.13,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 114.95,
+  "experts": {
+   "level": {
+    "z": 0.93,
+    "p": 0.674
+   },
+   "shift": {
+    "z": 8.78,
+    "p": 0.00142
+   },
+   "volatility": {
+    "z": 2.12,
+    "p": 0.00435
+   },
+   "novelty": {
+    "z": 114.95,
+    "p": 0.000254
+   }
+  },
+  "info": {
+   "nn_distance": 114.94998912570631,
+   "nn_age": 448,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (448 steps ago) differs by 114.95 per point.",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-03-31T18:02:53.000000000",
+  "value": 19.0,
+  "score": 5.19,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 13.19,
+  "experts": {
+   "level": {
+    "z": -0.07,
+    "p": 0.974
+   },
+   "shift": {
+    "z": 13.19,
+    "p": 0.000329
+   },
+   "volatility": {
+    "z": 2.7,
+    "p": 0.000925
+   },
+   "novelty": {
+    "z": 101.17,
+    "p": 0.000468
+   }
+  },
+  "info": {
+   "recent_mean": 109.87204920847532,
+   "baseline_mean": 10.593200357215325
+  },
+  "explanation": "Sustained level shift: recent mean 109.87 vs baseline 10.59 (13.2 scales above).",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-04-08T11:52:53.000000000",
+  "value": 530.0,
+  "score": 5.02,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 153.16,
+  "experts": {
+   "level": {
+    "z": 153.16,
+    "p": 2.41e-06
+   },
+   "shift": {
+    "z": 11.28,
+    "p": 0.000565
+   },
+   "volatility": {
+    "z": 2.65,
+    "p": 0.000978
+   },
+   "novelty": {
+    "z": 50.63,
+    "p": 0.00286
+   }
+  },
+  "info": {
+   "expected": 6.146709032768651,
+   "band": [
+    -4.113983317707966,
+    16.40740138324527
+   ]
+  },
+  "explanation": "Value 530.00 is 153.2 scales above the learned baseline 6.15 (normal band -4.11 to 16.41).",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-04-14T14:52:53.000000000",
+  "value": 2241.0,
+  "score": 6.13,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 550.0,
+  "experts": {
+   "level": {
+    "z": 550.0,
+    "p": 1.83e-07
+   },
+   "shift": {
+    "z": 62.73,
+    "p": 6.46e-07
+   },
+   "volatility": {
+    "z": 4.16,
+    "p": 0.000123
+   },
+   "novelty": {
+    "z": 547.11,
+    "p": 3.93e-06
+   }
+  },
+  "info": {
+   "expected": 9.429120913846049,
+   "band": [
+    -2.7431253801392366,
+    21.601367207831334
+   ]
+  },
+  "explanation": "Value 2,241.00 is 550.0 scales above the learned baseline 9.43 (normal band -2.74 to 21.60).",
+  "event_id": 5,
+  "series": "realTweets/Twitter_volume_KO.csv"
+ },
+ {
+  "timestamp": "2015-02-28T03:27:53.000000000",
+  "value": 9.0,
+  "score": 5.36,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 14.31,
+  "experts": {
+   "level": {
+    "z": 14.31,
+    "p": 1.1e-06
+   },
+   "shift": {
+    "z": 0.48,
+    "p": 0.371
+   },
+   "volatility": {
+    "z": 0.2,
+    "p": 0.819
+   },
+   "novelty": {
+    "z": 1.8,
+    "p": 0.0239
+   }
+  },
+  "info": {
+   "expected": 0.41122894775190294,
+   "band": [
+    -1.3889705900773694,
+    2.2114284855811754
+   ]
+  },
+  "explanation": "Value 9.00 is 14.3 scales above the learned baseline 0.41 (normal band -1.39 to 2.21).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-03-02T09:02:53.000000000",
+  "value": 4.0,
+  "score": 6.24,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 1.27,
+  "experts": {
+   "level": {
+    "z": 7.4,
+    "p": 0.00268
+   },
+   "shift": {
+    "z": 1.27,
+    "p": 1.43e-07
+   },
+   "volatility": {
+    "z": 0.64,
+    "p": 0.413
+   },
+   "novelty": {
+    "z": 0.61,
+    "p": 0.245
+   }
+  },
+  "info": {
+   "recent_mean": 0.8869904350518858,
+   "baseline_mean": 0.25155398349251396
+  },
+  "explanation": "Sustained level shift: recent mean 0.89 vs baseline 0.25 (1.3 scales above).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-03-04T17:32:53.000000000",
+  "value": 0.0,
+  "score": 5.49,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 5.32,
+  "experts": {
+   "level": {
+    "z": -1.11,
+    "p": 0.533
+   },
+   "shift": {
+    "z": 3.25,
+    "p": 0.00705
+   },
+   "volatility": {
+    "z": 0.88,
+    "p": 0.203
+   },
+   "novelty": {
+    "z": 5.32,
+    "p": 0.000329
+   }
+  },
+  "info": {
+   "nn_distance": 5.315072906367325,
+   "nn_age": 532,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (532 steps ago) differs by 5.32 per point.",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-03-13T20:17:53.000000000",
+  "value": 6.0,
+  "score": 6.08,
+  "threshold": 5.0,
+  "expert": "novelty",
+  "z": 6.47,
+  "experts": {
+   "level": {
+    "z": 1.3,
+    "p": 0.455
+   },
+   "shift": {
+    "z": 3.66,
+    "p": 0.00182
+   },
+   "volatility": {
+    "z": 1.09,
+    "p": 0.0103
+   },
+   "novelty": {
+    "z": 6.47,
+    "p": 0.000179
+   }
+  },
+  "info": {
+   "nn_distance": 6.471089552772392,
+   "nn_age": 82,
+   "window": 8
+  },
+  "explanation": "The last 8 points form a pattern not seen before: the closest past match (82 steps ago) differs by 6.47 per point.",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-03-23T14:12:53.000000000",
+  "value": 10.0,
+  "score": 6.03,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 5.74,
+  "experts": {
+   "level": {
+    "z": 6.1,
+    "p": 0.00802
+   },
+   "shift": {
+    "z": 5.74,
+    "p": 8.16e-05
+   },
+   "volatility": {
+    "z": 1.48,
+    "p": 0.00212
+   },
+   "novelty": {
+    "z": 3.0,
+    "p": 0.00382
+   }
+  },
+  "info": {
+   "recent_mean": 4.849411660492225,
+   "baseline_mean": 0.5006926725363544
+  },
+  "explanation": "Sustained level shift: recent mean 4.85 vs baseline 0.50 (5.7 scales above).",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-04-05T06:22:53.000000000",
+  "value": 0.0,
+  "score": 5.5,
+  "threshold": 5.0,
+  "expert": "volatility",
+  "z": 1.98,
+  "experts": {
+   "level": {
+    "z": -0.52,
+    "p": 0.783
+   },
+   "shift": {
+    "z": 2.82,
+    "p": 0.0065
+   },
+   "volatility": {
+    "z": 1.98,
+    "p": 0.000356
+   },
+   "novelty": {
+    "z": 3.66,
+    "p": 0.00166
+   }
+  },
+  "info": {
+   "recent_volatility": 3.637498637295546,
+   "baseline_volatility": 0.4985134910123184
+  },
+  "explanation": "Noise burst: step-to-step volatility is 7.3x its baseline.",
+  "event_id": 5,
+  "series": "realTweets/Twitter_volume_PFE.csv"
+ },
+ {
+  "timestamp": "2015-03-02T18:17:53.000000000",
+  "value": 8.0,
+  "score": 6.26,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 2.58,
+  "experts": {
+   "level": {
+    "z": 4.19,
+    "p": 0.0228
+   },
+   "shift": {
+    "z": 2.58,
+    "p": 6.75e-05
+   },
+   "volatility": {
+    "z": 0.6,
+    "p": 0.261
+   },
+   "novelty": {
+    "z": 1.46,
+    "p": 0.394
+   }
+  },
+  "info": {
+   "recent_mean": 4.275145428480483,
+   "baseline_mean": 1.211795854224875
+  },
+  "explanation": "Sustained level shift: recent mean 4.28 vs baseline 1.21 (2.6 scales above).",
+  "event_id": 0,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ },
+ {
+  "timestamp": "2015-03-04T11:32:53.000000000",
+  "value": 141.0,
+  "score": 5.37,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 54.36,
+  "experts": {
+   "level": {
+    "z": 54.36,
+    "p": 0.000377
+   },
+   "shift": {
+    "z": 15.18,
+    "p": 0.00529
+   },
+   "volatility": {
+    "z": 2.78,
+    "p": 0.00147
+   },
+   "novelty": {
+    "z": 51.15,
+    "p": 0.00118
+   }
+  },
+  "info": {
+   "expected": 1.7595448964577067,
+   "band": [
+    -5.92470796952057,
+    9.443797762435983
+   ]
+  },
+  "explanation": "Value 141.00 is 54.4 scales above the learned baseline 1.76 (normal band -5.92 to 9.44).",
+  "event_id": 1,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ },
+ {
+  "timestamp": "2015-03-08T10:32:53.000000000",
+  "value": 186.0,
+  "score": 5.47,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 176.44,
+  "experts": {
+   "level": {
+    "z": 176.44,
+    "p": 6.35e-05
+   },
+   "shift": {
+    "z": 15.74,
+    "p": 0.0159
+   },
+   "volatility": {
+    "z": 2.42,
+    "p": 0.0249
+   },
+   "novelty": {
+    "z": 6.11,
+    "p": 0.0796
+   }
+  },
+  "info": {
+   "expected": 0.7246509132391413,
+   "band": [
+    -2.425527163838778,
+    3.8748289903170603
+   ]
+  },
+  "explanation": "Value 186.00 is 176.4 scales above the learned baseline 0.72 (normal band -2.43 to 3.87).",
+  "event_id": 2,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ },
+ {
+  "timestamp": "2015-03-24T18:52:53.000000000",
+  "value": 7.0,
+  "score": 5.12,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 32.7,
+  "experts": {
+   "level": {
+    "z": 0.54,
+    "p": 0.823
+   },
+   "shift": {
+    "z": 32.7,
+    "p": 0.00141
+   },
+   "volatility": {
+    "z": 2.81,
+    "p": 0.0129
+   },
+   "novelty": {
+    "z": 33.02,
+    "p": 0.00364
+   }
+  },
+  "info": {
+   "recent_mean": 58.651334869581916,
+   "baseline_mean": 1.6978236383025693
+  },
+  "explanation": "Sustained level shift: recent mean 58.65 vs baseline 1.70 (32.7 scales above).",
+  "event_id": 3,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ },
+ {
+  "timestamp": "2015-03-29T10:32:53.000000000",
+  "value": 171.0,
+  "score": 5.25,
+  "threshold": 5.0,
+  "expert": "level",
+  "z": 180.16,
+  "experts": {
+   "level": {
+    "z": 180.16,
+    "p": 0.000299
+   },
+   "shift": {
+    "z": 41.15,
+    "p": 0.000702
+   },
+   "volatility": {
+    "z": 2.72,
+    "p": 0.0131
+   },
+   "novelty": {
+    "z": 15.97,
+    "p": 0.0201
+   }
+  },
+  "info": {
+   "expected": 0.6301590759350905,
+   "band": [
+    -2.2067477503573714,
+    3.4670659022275525
+   ]
+  },
+  "explanation": "Value 171.00 is 180.2 scales above the learned baseline 0.63 (normal band -2.21 to 3.47).",
+  "event_id": 4,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ },
+ {
+  "timestamp": "2015-04-14T13:07:53.000000000",
+  "value": 69.0,
+  "score": 5.15,
+  "threshold": 5.0,
+  "expert": "shift",
+  "z": 47.05,
+  "experts": {
+   "level": {
+    "z": 51.59,
+    "p": 0.00607
+   },
+   "shift": {
+    "z": 47.05,
+    "p": 0.000566
+   },
+   "volatility": {
+    "z": 3.0,
+    "p": 0.0048
+   },
+   "novelty": {
+    "z": 18.78,
+    "p": 0.0118
+   }
+  },
+  "info": {
+   "recent_mean": 71.71494609011661,
+   "baseline_mean": 1.5124192445844336
+  },
+  "explanation": "Sustained level shift: recent mean 71.71 vs baseline 1.51 (47.0 scales above).",
+  "event_id": 5,
+  "series": "realTweets/Twitter_volume_UPS.csv"
+ }
+]

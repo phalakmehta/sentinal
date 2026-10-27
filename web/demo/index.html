@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentinel · Live demo</title>
+<meta name="description" content="Watch Sentinel stream a real signal point by point, raise alarms only when something is truly rare, and explain each one. Runs entirely in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070A0F'/%3E%3Cpath d='M4 19h7l2-9 3 14 2-8 2 3h8' fill='none' stroke='%235BC8F5' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='8' r='3.2' fill='%23FF4D5E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <a class="brand" href="../" title="Back to the deck"><span class="word">Sentinel</span><span class="live" id="live"></span><span class="tag">Live demo</span></a>
+    <div class="status" id="status">Pick a signal, then press play</div>
+    <nav class="top-r">
+      <a class="toplink" href="../">The deck</a>
+      <button class="icon" id="theme" title="Light / dark (T)" aria-label="Switch light or dark">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <aside class="side">
+    <div class="side-sec">
+      <label class="k" for="q">Signal</label>
+      <input id="q" class="search" type="search" placeholder="Search 58 signals" autocomplete="off">
+    </div>
+    <div class="list" id="list"></div>
+    <details class="side-sec settings" id="settings">
+      <summary><span class="k">Detector settings</span><span class="badge" id="cfg-badge">submitted</span></summary>
+      <div class="set">
+        <div class="set-k">Alarm when a value is rarer than</div>
+        <div class="seg" id="risk">
+          <button data-v="1e-3">1 in 1k</button><button data-v="1e-4">10k</button><button data-v="1e-5" class="on">100k</button><button data-v="1e-6">1M</button>
+        </div>
+      </div>
+      <div class="set">
+        <div class="set-k">Quiet period after an alarm <b id="cool-v">300</b></div>
+        <input type="range" id="cool" min="50" max="1000" step="50" value="300">
+      </div>
+      <div class="set">
+        <div class="set-k">Novelty gate <b id="gate-v">off</b></div>
+        <input type="range" id="gate" min="0" max="3" step="0.5" value="0">
+      </div>
+      <button class="linkbtn" id="cfg-reset">Back to the submitted settings</button>
+    </details>
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept=".csv,text/csv" hidden>
+      <span class="k">Your own data</span>
+      <span>Drop a CSV with <code>timestamp,value</code> columns, or click to choose one.</span>
+    </label>
+    <p class="side-foot">Runs entirely in your browser. Same detector as our Python code, checked identical on all 365,558 benchmark values.</p>
+  </aside>
+
+  <main class="main">
+    <section class="head">
+      <div class="eyebrow" id="cat">&nbsp;</div>
+      <h1 id="title">Loading signals…</h1>
+      <div class="meta" id="meta"></div>
+    </section>
+
+    <section class="transport">
+      <button class="play" id="play" aria-label="Play">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+      <div class="seg" id="speed" title="Values per second">
+        <button data-v="120">Slow</button><button data-v="600" class="on">Normal</button><button data-v="3000">Fast</button><button data-v="1e9">Turbo</button>
+      </div>
+      <button class="ghost" id="end">Jump to end</button>
+      <button class="ghost" id="reset">Reset</button>
+      <div class="seg view" id="view"><button data-v="follow" class="on">Follow</button><button data-v="all">Whole series</button></div>
+    </section>
+    <div class="progress" id="progress" title="Click to fast-forward"><div class="prog-marks" id="prog-marks"></div><i id="prog-fill"></i></div>
+
+    <section class="kpis">
+      <div><span class="k">Values streamed</span><b id="k-n">0</b><small id="k-of">&nbsp;</small></div>
+      <div><span class="k">Alarms</span><b id="k-al">0</b><small id="k-fa">&nbsp;</small></div>
+      <div><span class="k">Anomalies caught</span><b id="k-win">–</b><small id="k-win-s">labelled windows so far</small></div>
+      <div><span class="k">Precision so far</span><b id="k-prec">–</b><small>alarms that were real</small></div>
+      <div><span class="k">Speed</span><b id="k-us">–</b><small>µs per value</small></div>
+    </section>
+
+    <div class="done" id="done" hidden></div>
+
+    <section class="charts">
+      <div class="chart-h">
+        <span class="k">The signal</span>
+        <span class="legend"><span><i class="sw band"></i>labelled anomaly</span><span><i class="sw beacon"></i>alarm, real</span><span><i class="sw false"></i>false alarm</span><span><i class="sw warm"></i>learning normal</span></span>
+      </div>
+      <div class="cv" id="cv-sig"><canvas></canvas></div>
+      <div class="chart-h">
+        <span class="k">How rare each value is</span>
+        <span class="legend"><span><i class="sw line"></i><span id="thr-label">alarm line · 1 in 100,000</span></span></span>
+      </div>
+      <div class="cv" id="cv-score"><canvas></canvas></div>
+      <div class="tip" id="tip" hidden></div>
+    </section>
+
+    <section class="watch">
+      <div class="chart-h"><span class="k">What the five watchers see right now</span><span class="legend" id="watch-note"></span></div>
+      <div class="wgrid" id="wgrid"></div>
+    </section>
+
+    <footer class="foot">
+      Data: <a href="https://github.com/numenta/NAB" target="_blank" rel="noopener">Numenta Anomaly Benchmark</a> (<a href="data/NAB_LICENSE.txt">AGPL-3.0</a>) ·
+      Sentinel by team <b>if/elif/else</b> · Utkrishta 2026 · Keys: <b>Space</b> play · <b>E</b> end · <b>R</b> reset · <b>V</b> view · <b>T</b> theme
+    </footer>
+  </main>
+
+  <aside class="feed">
+    <div class="feed-h"><span class="k">Alarms and evidence</span><b id="feed-n">0</b></div>
+    <div id="cards"></div>
+  </aside>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="sentinel.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

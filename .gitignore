@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+logs/
+data/raw/
+runs/*/predictions.parquet
+
+# local working files, not part of the submission
+p.out
+HANDOFF.md
+Utkrishta 2026 Participant Problem Statements.pdf
+
+# LaTeX build files and old image exports of the earlier deck (final deck: presentation/)
+deck/*.aux
+deck/*.fdb_latexmk
+deck/*.fls
+deck/*.log
+deck/*.nav
+deck/*.out
+deck/*.snm
+deck/*.toc
+deck/*.xdv
+deck/*.pptx
+
+# Office lock files and the temporary export used while a deck is open in PowerPoint
+~$*
+presentation/*_new.pptx

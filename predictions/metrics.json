@@ -1,0 +1,120 @@
+{
+ "overall": {
+  "f1": 0.5941,
+  "precision": 0.6321,
+  "recall": 0.5603,
+  "windows": 116,
+  "detected": 65,
+  "alarms": 106,
+  "fp": 39,
+  "median_delay_pts": 163.0,
+  "median_delay_frac": 0.499
+ },
+ "median_delay_from_label_pts": 0.0,
+ "pct_detections_within_10_pts_of_label": 66.2,
+ "loco_held_out_f1": 0.5941,
+ "source_run": 6,
+ "runs_used": 7,
+ "run_budget": 15,
+ "per_category": {
+  "artificialNoAnomaly": {
+   "f1": 0.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "windows": 0,
+   "detected": 0,
+   "alarms": 0,
+   "fp": 0,
+   "median_delay_pts": null,
+   "median_delay_frac": null
+  },
+  "artificialWithAnomaly": {
+   "f1": 0.9091,
+   "precision": 1.0,
+   "recall": 0.8333,
+   "windows": 6,
+   "detected": 5,
+   "alarms": 5,
+   "fp": 0,
+   "median_delay_pts": 201.0,
+   "median_delay_frac": 0.499
+  },
+  "realAWSCloudwatch": {
+   "f1": 0.549,
+   "precision": 0.6667,
+   "recall": 0.4667,
+   "windows": 30,
+   "detected": 14,
+   "alarms": 21,
+   "fp": 7,
+   "median_delay_pts": 102.5,
+   "median_delay_frac": 0.499
+  },
+  "realAdExchange": {
+   "f1": 0.5263,
+   "precision": 1.0,
+   "recall": 0.3571,
+   "windows": 14,
+   "detected": 5,
+   "alarms": 5,
+   "fp": 0,
+   "median_delay_pts": 27.0,
+   "median_delay_frac": 0.491
+  },
+  "realKnownCause": {
+   "f1": 0.5714,
+   "precision": 0.5217,
+   "recall": 0.6316,
+   "windows": 19,
+   "detected": 12,
+   "alarms": 23,
+   "fp": 11,
+   "median_delay_pts": 112.5,
+   "median_delay_frac": 0.514
+  },
+  "realTraffic": {
+   "f1": 0.4211,
+   "precision": 0.8,
+   "recall": 0.2857,
+   "windows": 14,
+   "detected": 4,
+   "alarms": 5,
+   "fp": 1,
+   "median_delay_pts": 65.0,
+   "median_delay_frac": 0.514
+  },
+  "realTweets": {
+   "f1": 0.6534,
+   "precision": 0.5745,
+   "recall": 0.7576,
+   "windows": 33,
+   "detected": 25,
+   "alarms": 47,
+   "fp": 20,
+   "median_delay_pts": 198.0,
+   "median_delay_frac": 0.499
+  }
+ },
+ "params": {
+  "warmup": 300,
+  "risk": 1e-05,
+  "hysteresis": 1.0,
+  "max_event_len": 30,
+  "cooldown": 300,
+  "init_q": 0.95,
+  "tail_shrink": 200,
+  "alpha_level": 0.02,
+  "alpha_diff": 0.02,
+  "alpha_seasonal": 0.02,
+  "alpha_fast": 0.1,
+  "alpha_slow": 0.005,
+  "novelty_gate": 0.0,
+  "cusum_k": 2.0,
+  "relearn": true,
+  "acf_min": 0.4,
+  "discord_m": 8,
+  "discord_h": 2000,
+  "experts": "level+seasonal+shift+volatility+novelty",
+  "history": 6000
+ }
+}

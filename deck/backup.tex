@@ -1,0 +1,121 @@
+% Sentinel: backup slides for Q&A (kept out of the required 10-slide deck).
+% Build:  latexmk -xelatex backup.tex
+\documentclass[aspectratio=169, 10pt]{beamer}
+\input{preamble}
+\setbeamertemplate{frame footer}{Sentinel \,·\, backup slides for questions}
+
+\begin{document}
+
+% ------------------------------------------------------------------- B1
+\begin{frame}{Backup: why shrink the tail shape, and by how much}
+  \includegraphics{b_shrinkage}
+  \vspace{3mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright \textbf{Left.} Before, the level expert's fitted shape was above 0.3 on 25 of 58
+      series: “huge values are normal”, so obvious spikes could not fire. After shrinkage most shapes sit
+      near 0 until a series has shown enough extremes to justify a heavy tail.\par}
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright \textbf{Right.} The strength is bracketed on both sides: 100 and 400 are worse
+      than 200. With re-learning the best value moved from 100 to 200, because re-learning absorbs the
+      repeat alarms that stronger shrinkage used to cause.\par}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------------- B2
+\begin{frame}{Backup: re-learning after a regime change}
+  \includegraphics{b_relearn}
+  \vspace{3mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright \textbf{The pattern.} A disk sat idle through the warm-up, then started
+      working in bursts. The old detector re-fired the moment every 300-point cooldown ended: at points
+      461, 762, 1063 and 1364, exactly 301 apart.\par}
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright \textbf{The rule.} An alarm still on at the first point after the cooldown is
+      the same incident, so the normal has changed: rebuild every expert from the last 300 points. Result:
+      9 fewer false alarms, no window lost. It fired 3 times in 365,558 points, about 0.2\,s each.\par}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------------- B3
+\begin{frame}{Backup: what we miss and where false alarms come from}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+      \includegraphics{b_type_rates}
+      \figcap{Detection rate by anomaly type, before (run 1) and after (run 6).}
+    \column{0.47\textwidth}
+      \includegraphics{b_fp_by_category}
+      \figcap{The 39 false alarms by category.}
+  \end{columns}
+  \vspace{4mm}
+  {\footnotesize\raggedright The gains are on biggest-ever spikes (31 → 37) and level shifts (10 → 11). “Seen before”
+  spikes did not move (11 of 32): an equally big spike already happened unlabelled, so a rarity-based
+  detector, by design, has learned that size is normal. Most false alarms are large unlabelled bursts in
+  tweet volume.\par}
+\end{frame}
+
+% ------------------------------------------------------------------- B4
+\begin{frame}{Backup: questions we expect}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright
+      \textbf{Why not deep learning?}\\ Each signal must be learned live from a few hundred points, with
+      no training set. Deep models need far more data per signal, adapt slowly and are hard to explain.\\[2.5mm]
+      \textbf{Is 0.594 overfitted?}\\ Only global settings, at most 15 runs, and leave-one-category-out
+      gives 0.594 too. The ideas were designed on all labels, so expect the hidden test a little lower.\\[2.5mm]
+      \textbf{Why is recall 0.56?}\\ 32 of 116 anomalies are “seen before” spikes. On level shifts we find
+      79\%, on biggest-ever spikes 67\%.\par}
+    \column{0.48\textwidth}
+      {\footnotesize\raggedright
+      \textbf{What does risk $10^{-5}$ mean?}\\ An alarm fires only when a value is that rare for that
+      signal. The same rule holds on every signal; no threshold is set by hand.\\[2.5mm]
+      \textbf{Is it really streaming?}\\ Each point is processed once, and the output at time $t$ uses data
+      up to $t$ only. Typical cost is 61\,µs per point.\\[2.5mm]
+      \textbf{How was the 15-run budget used?}\\ 7 runs: 1 reference, 3 kept, 3 dropped. 7 more ideas were
+      rejected from saved outputs without spending a run.\par}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------------- B5
+\begin{frame}{Backup: why we report event-F1, not point-adjusted F1}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.40\textwidth}
+      \head{Point adjustment, used in many papers}
+      \begin{tikzpicture}[font=\scriptsize, cell/.style={draw=line, fill=white}]
+        \foreach \y in {0,-0.95} \fill[winfill] (0.95,\y-0.08) rectangle (2.6,\y+0.33);
+        \node[anchor=south west, inner sep=0pt] at (0,0.35) {\textbf{Alarms raised:} 1 of 8 window points};
+        \node[anchor=south west, inner sep=0pt] at (0,-0.6) {\textbf{After adjustment:} 8 of 8};
+        \foreach \y in {0,-0.95} \foreach \i in {0,...,17} \draw[cell] (\i*0.2,\y) rectangle ++(0.15,0.25);
+        \fill[sblue] (1.6,0) rectangle ++(0.15,0.25);
+        \foreach \i in {5,...,12} \fill[sblue] (\i*0.2,-0.95) rectangle ++(0.15,0.25);
+      \end{tikzpicture}\\[3mm]
+      {\footnotesize\raggedright Once any point of a labelled window fires, every point of the window
+      counts as found. A median NAB window is 212 points long, so one lucky alarm becomes 212 true
+      positives, while each false alarm costs only one point.\par}
+    \column{0.56\textwidth}
+      {\footnotesize\setlength{\tabcolsep}{4.5pt}
+      \begin{tabular}{@{}l r r r@{}}
+        \toprule
+        & \multicolumn{3}{c}{F1 when scored by}\\
+        \cmidrule(l){2-4}
+        detector & events & point-adjusted & points\\
+        \midrule
+        \textbf{\color{sblue}Sentinel (ours)} & \textbf{0.594} & 0.823 & 0.045\\
+        random, 1\% of points                 & 0.163 & \textbf{\color{sred}0.919} & 0.018\\
+        random, 0.28\% of points              & 0.146 & 0.765 & 0.005\\
+        flag every point                      & 0.945 & 0.168 & 0.168\\
+        \bottomrule
+      \end{tabular}}
+      \figcap{Our final labels against detectors that know nothing. 0.28\% is Sentinel's own alarm
+              rate. Random rows: mean of 5 seeds. \texttt{python scripts/metric\_check.py}, 0 runs.}
+  \end{columns}
+  \vfill
+  \bandnote{\textbf{Point adjustment rewards noise:} random alarms on 1\% of points beat Sentinel.
+    Event-F1, the challenge metric, separates them: random 0.16, Sentinel 0.594. No metric is
+    fool-proof: one endless alarm per series touches every window and scores 0.945 on event-F1.
+    So we also report the alarm count (106, of which 39 false) and the delay, and keep every alarm short.}
+  \vspace{1mm}
+\end{frame}
+
+\end{document}

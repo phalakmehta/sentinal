@@ -1,0 +1,93 @@
+% Shared look for sentinel.tex (10 slides) and backup.tex (Q&A backup).
+% Build: latexmk -xelatex sentinel.tex   (XeLaTeX: Fira Sans / Fira Math from the TeX tree)
+\usetheme[progressbar=frametitle, numbering=fraction, titleformat frame=regular,
+          sectionpage=none, block=fill]{metropolis}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setsansfont{FiraSans}[Extension=.otf, UprightFont=*-Book, BoldFont=*-SemiBold,
+                       ItalicFont=*-BookItalic, BoldItalicFont=*-SemiBoldItalic]
+\setmonofont{FiraMono}[Extension=.otf, UprightFont=*-Regular, BoldFont=*-Medium, Scale=0.9]
+\setmathfont{FiraMath-Regular.otf}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, decorations.pathreplacing}
+\graphicspath{{figures/}}
+
+% palette: the same colours as every figure
+\definecolor{ink}{HTML}{0B0B0B}
+\definecolor{ink2}{HTML}{52514E}
+\definecolor{muted}{HTML}{898781}
+\definecolor{line}{HTML}{C3C2B7}
+\definecolor{soft}{HTML}{F3F2EE}
+\definecolor{slate}{HTML}{1E2A35}
+\definecolor{sblue}{HTML}{2A78D6}
+\definecolor{sorange}{HTML}{EB6834}
+\definecolor{sred}{HTML}{D03B3B}
+\definecolor{winfill}{HTML}{E4E3DF}
+
+\setbeamersize{text margin left=6mm, text margin right=6mm}
+\hyphenpenalty=10000\exhyphenpenalty=10000   % no hyphenated words on slides
+\setbeamercolor{normal text}{fg=ink, bg=white}
+\setbeamercolor{frametitle}{bg=slate, fg=white}
+\setbeamercolor{progress bar}{fg=sorange, bg=slate}
+\setbeamercolor{alerted text}{fg=sorange}
+\setbeamercolor{frame numbering}{fg=muted}
+\setbeamercolor{footline}{fg=muted}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{frame footer}{size=\tiny}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+\setbeamertemplate{frame footer}{Sentinel \,·\, Utkrishta 2026 \,·\, Challenge 2}
+
+% team details: edit these two lines
+\newcommand{\teamname}{if/elif/else}
+\newcommand{\members}{Aarohi Gattewar \,·\, Phalak Mehta \,·\, Harshit Singh}
+
+% building blocks
+\newcommand{\hl}[1]{\textcolor{sblue}{\bfseries #1}}
+\newcommand{\figcap}[1]{\par\vspace{0.6mm}{\scriptsize\color{ink2}#1\par}}
+\newcommand{\head}[1]{{\small\bfseries #1\par}\vspace{0.8mm}}
+\newcommand{\alarmmark}[1][sred]{\tikz[baseline=-0.15ex]\fill[#1] (0,0.75ex) -- (1ex,0.75ex) -- (0.5ex,-0.15ex) -- cycle;}
+% a row of 4 headline numbers on one baseline: \kpirow{n1}{l1}{n2}{l2}{n3}{l3}{n4}{l4}
+\newcommand{\kpinum}[1]{{\fontsize{21}{23}\selectfont\bfseries\color{sblue}#1}}
+\newcommand{\kpilab}[1]{{\scriptsize\color{ink2}#1}}
+\newcommand{\kpicell}[1]{\makebox[0.25\linewidth][l]{\kpinum{#1}}}
+\newcommand{\kpilabcell}[1]{\makebox[0.25\linewidth][l]{\kpilab{#1}}}   % labels are one line each
+\newcommand{\kpirow}[8]{%
+  {\noindent\kpicell{#1}\kpicell{#3}\kpicell{#5}\kpicell{#7}\par\vspace{-2.6mm}%
+   \noindent\kpilabcell{#2}\kpilabcell{#4}\kpilabcell{#6}\kpilabcell{#8}\par}}
+\newcommand{\chip}[1]{\tikz[baseline=(c.base)]\node[fill=soft, rounded corners=5pt, inner xsep=5pt,
+  inner ysep=2.5pt, font=\scriptsize, text=ink2] (c) {#1};}
+\newcommand{\need}[3]{%
+  \begin{tikzpicture}[baseline=(n.north)]
+    \node[circle, fill=sblue, text=white, minimum size=5.5mm, inner sep=0pt, font=\small\bfseries] (n) {#1};
+  \end{tikzpicture}\hspace{2.5mm}%
+  \begin{minipage}[t]{5.55cm}\raggedright\vspace{-1.6mm}{\bfseries #2}\\[0.5mm]{\footnotesize\color{ink2}#3}\end{minipage}}
+\newcommand{\evidence}[3]{% #1 colour, #2 header, #3 sentence
+  \begin{tikzpicture}
+    \node[fill=soft, text width=5.5cm, inner xsep=5pt, inner ysep=4pt, align=left, font=\scriptsize] (e)
+      {{\bfseries\color{#1}#2}\\[1pt]{\color{ink}#3}};
+    \draw[#1, line width=2pt] (e.north west) -- (e.south west);
+  \end{tikzpicture}}
+% self-explanatory deck: a "How to read" line under each chart, a summary box per slide
+\newcommand{\howto}[1]{\figcap{\textbf{\color{ink}How to read.} #1}}
+\newcommand{\abox}[3]{% #1 width, #2 title, #3 text
+  \begin{tikzpicture}[baseline=(a.north)]
+    \node[fill=soft, text width=#1, inner xsep=6pt, inner ysep=5pt, align=left, font=\scriptsize] (a)
+      {{\footnotesize\bfseries\color{sblue}#2}\\[2pt]{\color{ink}#3}};
+  \end{tikzpicture}}
+\newcommand{\ev}[2]{% full-width evidence card: #1 header, #2 the sentence Sentinel wrote
+  \begin{tikzpicture}
+    \node[fill=soft, text width=\dimexpr\linewidth-12pt\relax, inner xsep=5pt, inner ysep=3pt, align=left,
+          font=\scriptsize] (e) {{\bfseries\color{sblue}#1}\\[1pt]{\color{ink}#2}};
+    \draw[sblue, line width=2pt] (e.north west) -- (e.south west);
+  \end{tikzpicture}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\bandnote}[1]{%
+  \begin{tikzpicture}
+    \node[fill=soft, text width=\dimexpr\linewidth-10pt\relax, inner xsep=5pt, inner ysep=4pt,
+          align=left, font=\scriptsize] (b) {#1};
+    \draw[sorange, line width=2pt] (b.north west) -- (b.south west);
+  \end{tikzpicture}}

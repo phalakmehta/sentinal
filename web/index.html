@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentinel · Utkrishta 2026</title>
+<meta name="description" content="Sentinel: a live anomaly detector that learns what is rare for each signal and explains every alarm. Team if/elif/else, Utkrishta 2026, Challenge 2.">
+<meta property="og:title" content="Sentinel · Utkrishta 2026">
+<meta property="og:description" content="A watchman for live data: it learns what normal looks like for each signal and speaks up only when something is truly rare.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFFFFF'/%3E%3Cpath d='M4 19h7l2-9 3 14 2-8 2 3h8' fill='none' stroke='%232A78D6' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='8' r='3.2' fill='%23EB6834'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="viewport">
+<main class="stage" id="stage">
+
+<!-- ================================================================ 1 · TITLE -->
+<section class="slide s1" data-chapter="0">
+  <div class="s1-top" data-a>
+    <div class="eyebrow"><span class="live"></span>Utkrishta 2026<span class="sep">/</span>Challenge 2<span class="sep">/</span>Adaptive time-series anomaly detection</div>
+    <div class="team-chip"><span class="k">Team</span><span class="team-name">if/elif/else</span></div>
+  </div>
+  <h1 class="mega" data-a style="--d:120">Sentinel<span class="mega-dot"></span></h1>
+  <p class="tagline" data-a style="--d:260">A watchman for live data. It learns what <em>normal</em> looks like for each signal, and speaks up only when something is truly rare, with a reason every time.</p>
+  <div class="chart" data-chart="hero" data-w="1920" data-h="230"></div>
+  <div class="s1-foot" data-a style="--d:500">
+    <div class="members">
+      <span>Aarohi Gattewar</span><span>Phalak Mehta</span><span>Harshit Singh</span>
+    </div>
+    <div class="s1-stats">
+      <div><b>0.594</b><span>event-F1 on the full benchmark</span></div>
+      <div><b>1.9×</b><span>the next best of 7 methods</span></div>
+      <div><b>16,000</b><span>values per second, one CPU core</span></div>
+    </div>
+  </div>
+  <aside class="notes">“Sentinel is a live anomaly detector. It learns what normal looks like for each signal and raises an alarm only when something is truly rare for that signal, with a one-line reason.” The line drawing itself is a real cloud database CPU signal, streamed point by point; both orange beacons are real problems Sentinel caught.</aside>
+</section>
+
+<!-- ================================================================ 2 · PROBLEM -->
+<section class="slide s2" data-chapter="1">
+  <header>
+    <div class="eyebrow" data-a><span class="n">02</span><span class="rule"></span>The problem</div>
+    <h2 class="title" data-a style="--d:80">Every failure leaves a trace in the data <em>before</em> it becomes an outage.</h2>
+  </header>
+  <div class="grid g-2">
+    <div class="col">
+      <div class="fig-head" data-a style="--d:160"><span class="k">Real signal</span>Temperature inside an industrial machine, before a known system failure</div>
+      <div class="chart" data-chart="machine" data-w="1000" data-h="300"></div>
+      <div class="axis-dates" data-a style="--d:300"><span data-start="machine"></span><span class="legend"><i class="sw band"></i>marked as anomalous by experts</span><span data-end="machine"></span></div>
+      <div class="two-ways">
+        <div class="way" data-a style="--d:700">
+          <div class="way-k"><i class="x"></i>Stay quiet</div>
+          <p>Miss the warning and it turns into an <b>outage</b>: lost money, unhappy users.</p>
+        </div>
+        <div class="way" data-a style="--d:820">
+          <div class="way-k"><i class="x"></i>Cry wolf</div>
+          <p>Raise too many alarms and people <b>stop listening</b>, then miss the real one.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col needs">
+      <div class="k" data-a style="--d:300">So a good detector must</div>
+      <ol>
+        <li data-a style="--d:420"><span class="num-serif">1</span><div><h3>Decide live</h3><p>Each value arrives once. Decide now, never peek at the future.</p></div></li>
+        <li data-a style="--d:540"><span class="num-serif">2</span><div><h3>Fit any signal</h3><p>Server CPU, ad prices, road traffic, tweets. One fixed threshold cannot fit them all.</p></div></li>
+        <li data-a style="--d:660"><span class="num-serif">3</span><div><h3>Raise few alarms, each with a reason</h3><p>Every flag needs a score, a NORMAL / ANOMALOUS label and evidence.</p></div></li>
+      </ol>
+      <div class="where" data-a style="--d:900"><span class="k">Where it matters</span><div class="chips"><span>Cloud servers</span><span>Factories</span><span>Online ads</span><span>City traffic</span><span>Social media</span></div></div>
+    </div>
+  </div>
+  <aside class="notes">Machines, websites and sensors produce a number every few minutes. This is a real temperature sensor inside an industrial machine; the shaded bands are moments experts marked as anomalies around a known failure. Two ways to get it wrong: stay quiet and you get an outage; cry wolf and people ignore the alarms. So we need a detector that decides live, works on any signal, and raises few alarms, each explained.</aside>
+</section>
+
+<!-- ================================================================ 3 · WHY IT'S HARD (DATA + EDA) -->
+<section class="slide s3" data-chapter="1">
+  <header>
+    <div class="eyebrow" data-a><span class="n">03</span><span class="rule"></span>Why it's hard · the data</div>
+    <h2 class="title" data-a style="--d:80">The textbook rule raises <em>2,403 alarms</em> for just 116 real problems.</h2>
+  </header>
+  <div class="grid g-2">
+    <div class="col">
+      <div class="trio">
+        <div data-a style="--d:180"><b class="muted" data-count="2403">2,403</b><span>alarms from the textbook “3σ” rule</span></div>
+        <div data-a style="--d:280"><b data-count="116">116</b><span>real anomalies, marked by experts</span></div>
+        <div data-a style="--d:380"><b class="hot" data-count="106">106</b><span>alarms from Sentinel</span></div>
+      </div>
+      <div class="fig-head" data-a style="--d:420"><span class="k">One signal up close</span>Tweets mentioning Facebook, two months</div>
+      <div class="chart" data-chart="fb" data-w="1000" data-h="330"></div>
+      <div class="legend row" data-a style="--d:600">
+        <span><i class="sw tick"></i>3σ rule: <b>114</b> alarms</span>
+        <span><i class="sw beacon"></i>Sentinel: <b>2</b> alarms, both real</span>
+        <span><i class="sw band"></i>real anomaly</span>
+      </div>
+    </div>
+    <div class="col data-col">
+      <div class="k" data-a style="--d:200">The data · Numenta Anomaly Benchmark</div>
+      <div class="data-big" data-a style="--d:260"><span><b>58</b> signals</span><span><b>365,558</b> values</span><span><b>116</b> anomalies</span></div>
+      <div class="cats" data-a style="--d:340"></div>
+      <div class="k mt" data-a style="--d:460">What the data taught us</div>
+      <ul class="lessons">
+        <li data-a style="--d:520"><b>Extremes are normal.</b> 47 of 58 signals have heavy tails, so “big” does not mean “wrong”.</li>
+        <li data-a style="--d:600"><b>Rhythm matters.</b> 18 signals repeat every day, so low at 3 a.m. can be fine.</li>
+        <li data-a style="--d:680"><b>No common scale.</b> Percent, dollars, tweet counts, car speeds.</li>
+      </ul>
+      <div class="prep" data-a style="--d:780"><span class="k">Preprocessing</span><p>Almost none, on purpose. Read in time order, no filling, no rescaling. Sentinel learns each signal's scale itself.</p></div>
+    </div>
+  </div>
+  <aside class="notes">The Numenta Anomaly Benchmark: 58 real and artificial signals, 365 thousand values, 116 labelled anomalies. The textbook rule, “alarm if a value is 3 standard deviations from average”, fires 114 times on this Twitter signal, which has 2 real anomalies. Across the dataset it raises 2,403 alarms. Real data has extreme values all the time. Sentinel fires twice here, both correct.</aside>
+</section>
+
+<!-- ================================================================ 4 · OUR ANSWER (SYSTEM DESIGN) -->
+<section class="slide s4" data-chapter="2">
+  <header>
+    <div class="eyebrow" data-a><span class="n">04</span><span class="rule"></span>Our answer · how Sentinel works</div>
+    <h2 class="title" data-a style="--d:80">Five watchers ask one question: <em>how rare is this?</em></h2>
+  </header>
+  <div class="flow">
+    <div class="stage-col st-in" data-a style="--d:200">
+      <div class="st-k"><span>1</span>A value arrives</div>
+      <svg class="mini-live" viewBox="0 0 200 70"><path d="M0 46 L14 44 L26 48 L38 40 L50 45 L62 42 L74 47 L86 43 L98 46 L110 41 L122 45 L134 44 L146 47 L158 42 L170 45 L182 12" /><circle cx="182" cy="12" r="5"/></svg>
+      <p>One value at a time. Never looks ahead.</p>
+    </div>
+    <div class="pipe"><i></i></div>
+    <div class="stage-col st-watch" data-a style="--d:320">
+      <div class="st-k"><span>2</span>Five watchers look at it</div>
+      <ul class="watchers">
+        <li><b>Spike</b><span>this value vs. its learned normal</span></li>
+        <li><b>Routine</b><span>vs. the same time yesterday</span></li>
+        <li><b>New level</b><span>last 10 values vs. last 200</span></li>
+        <li><b>Jitter</b><span>how jumpy or frozen the last 10 are</span></li>
+        <li><b>New shape</b><span>last 8 values vs. the past 2,000</span></li>
+      </ul>
+    </div>
+    <div class="pipe"><i style="animation-delay:.5s"></i></div>
+    <div class="stage-col st-rare" data-a style="--d:440">
+      <div class="st-k"><span>3</span>Rarity meter</div>
+      <div class="meter">
+        <div class="meter-scale">
+          <span>1 in 10</span><span>1 in 1,000</span><span class="hot">1 in 100,000</span><span>1 in 10 million</span>
+        </div>
+        <div class="meter-bar"><i class="needle"></i></div>
+      </div>
+      <p>How often has <em>this</em> signal done something this extreme?</p>
+    </div>
+    <div class="pipe"><i style="animation-delay:1s"></i></div>
+    <div class="stage-col st-decide" data-a style="--d:560">
+      <div class="st-k"><span>4</span>Decide</div>
+      <p class="rule-big">Rarer than<br><b>1 in 100,000</b>?</p>
+      <div class="yn"><span class="yes">yes → alarm</span><span class="no">no → normal</span></div>
+      <p class="small">Then quiet for 300 values: one alarm per incident.</p>
+    </div>
+    <div class="pipe"><i style="animation-delay:1.5s"></i></div>
+    <div class="stage-col st-out" data-a style="--d:680">
+      <div class="st-k"><span>5</span>Output, every value</div>
+      <div class="readout">
+        <div><span>score</span><b>8.5</b></div>
+        <div><span>label</span><b class="hot">ANOMALOUS</b></div>
+        <div class="why"><span>reason</span>“Value 50.00 is 99.4 scales above the learned baseline 0.32.”</div>
+      </div>
+    </div>
+  </div>
+  <div class="chiprow" data-a style="--d:900">
+    <span>Learns “normal” from the first 300 values</span>
+    <span>Scores each value before learning from it</span>
+    <span>Same settings for all 58 signals</span>
+    <span>61 µs per value</span>
+  </div>
+  <aside class="notes">Think of a security guard watching one number at a time. Five watchers look for five kinds of weird: a spike, a broken daily routine, a new level that stays, jumpy or frozen behaviour, and a shape never seen before. Each feeds a rarity meter: how often has this signal done something this extreme? An alarm needs something rarer than 1 in 100,000. After an alarm, it waits 300 values, so one incident gives one alarm. Every value gets a score, a label and, if flagged, a reason.</aside>
+</section>
+
+<!-- ================================================================ 5 · THE KEY IDEA (ALGORITHM) -->
+<section class="slide s5" data-chapter="2">
+  <header>
+    <div class="eyebrow" data-a><span class="n">05</span><span class="rule"></span>The key idea · adaptive threshold</div>
+    <h2 class="title" data-a style="--d:80">Don't alarm on a number. Alarm on <em>rarity</em>.</h2>
+  </header>
+  <div class="grid g-5">
+    <div class="col">
+      <p class="lede" data-a style="--d:160">Each watcher keeps a rarity meter for <b>its own signal</b>. One rule everywhere, <b>rarer than 1 in 100,000</b>, so the same detector works on CPU, tweets and taxi rides with no threshold set by hand. <span class="aside">(The maths: extreme-value theory.)</span></p>
+      <div class="fig-head" data-a style="--d:260"><span class="k">Real signal</span>Cloud server CPU, and how rare each moment is</div>
+      <div class="chart" data-chart="clean" data-w="830" data-h="110"></div>
+      <div class="scorewrap"><div class="chart" data-chart="score" data-w="830" data-h="270"></div></div>
+      <p class="cap" data-a style="--d:900">Only two moments cross the line. Both are real problems.</p>
+    </div>
+    <div class="col fixes">
+      <div class="k" data-a style="--d:300">Two fixes we made this round</div>
+      <div class="fix" data-a style="--d:420">
+        <h3><span class="tag-new">fix 1</span>Don't jump to conclusions</h3>
+        <p>After seeing only a few extremes, the meter used to decide “huge values are normal” and missed obvious spikes. Now it needs real evidence first.</p>
+        <div class="hbars">
+          <div class="hb"><span>the spike</span><div class="bar"><i style="--w:16%;--d:700" class="ink"></i></div><b>111</b></div>
+          <div class="hb"><span>alarm needed, before</span><div class="bar"><i style="--w:98.6%;--d:820" class="dim"></i></div><b class="muted">690 · missed</b></div>
+          <div class="hb"><span>alarm needs, now</span><div class="bar"><i style="--w:11.3%;--d:940" class="hot"></i></div><b class="hot">79 · caught</b></div>
+        </div>
+        <p class="result">Biggest-ever spikes caught: <b>31 → 37</b></p>
+      </div>
+      <div class="fix" data-a style="--d:560">
+        <h3><span class="tag-new">fix 2</span>Accept a new normal</h3>
+        <p>If a problem is still there after the quiet period, the signal has changed for good. Sentinel re-learns normal instead of alarming again and again.</p>
+        <div class="strip-row"><span>before</span><div class="chart" data-chart="relearn_before" data-w="400" data-h="70"></div><b class="muted">7 false alarms</b></div>
+        <div class="strip-row"><span>after</span><div class="chart" data-chart="relearn_after" data-w="400" data-h="70"></div><b class="hot">1</b></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">The threshold is a probability, not a number. Each watcher asks how often it has seen something this extreme on this particular signal; the alarm needs rarer than 1 in 100,000. The maths is extreme-value theory. Fix 1: with only a few extremes seen, the meter guessed huge values were normal; a 111-unit spike needed 690 to alarm. Now it needs 79, so it is caught. Biggest-ever spikes caught went from 31 to 37. Fix 2: if the alarm is still on after the waiting period, the signal has a new normal, so Sentinel re-learns it: 7 false alarms down to 1 on this disk signal.</aside>
+</section>
+
+<!-- ================================================================ 6 · EXPERIMENTS -->
+<section class="slide s6" data-chapter="2">
+  <header>
+    <div class="eyebrow" data-a><span class="n">06</span><span class="rule"></span>How we got here · experiment log</div>
+    <h2 class="title" data-a style="--d:80">One idea per run. Keep it only if the score goes up.</h2>
+  </header>
+  <div class="grid g-6">
+    <div class="col">
+      <div class="chart traj" data-chart="trajectory" data-w="900" data-h="470"></div>
+      <p class="cap" data-a style="--d:900"><b>Phase 1:</b> v2 fixed how tails are learned, v3 added alarms for slow build-ups, v4 the new-shape watcher, v5 tuned the risk level.</p>
+    </div>
+    <div class="col">
+      <div class="k" data-a style="--d:200">Phase 2 · our 15-run budget</div>
+      <ol class="runs">
+        <li data-a style="--d:260"><span class="r">1</span><span class="c">Reproduce our starting point (v5)</span><span class="f">0.551</span><span class="pill ref">start</span></li>
+        <li data-a style="--d:320"><span class="r">2</span><span class="c">Fix 1, light</span><span class="f">0.561</span><span class="pill keep">kept</span></li>
+        <li data-a style="--d:380"><span class="r">3</span><span class="c">Fix 1, strong</span><span class="f">0.544</span><span class="pill drop">dropped</span></li>
+        <li data-a style="--d:440"><span class="r">4</span><span class="c">+ Fix 2, re-learning</span><span class="f">0.584</span><span class="pill keep">kept</span></li>
+        <li data-a style="--d:500"><span class="r">5</span><span class="c">Shorter learning: 300 → 200 values</span><span class="f">0.556</span><span class="pill drop">dropped</span></li>
+        <li data-a style="--d:560" class="best"><span class="r">6</span><span class="c">Fix 1, medium + re-learning</span><span class="f">0.594</span><span class="pill keep">final</span></li>
+        <li data-a style="--d:620"><span class="r">7</span><span class="c">Fix 1, strong + re-learning</span><span class="f">0.571</span><span class="pill drop">dropped</span></li>
+      </ol>
+      <div class="strategy" data-a style="--d:760">
+        <div><b>Study saved results first.</b> Free, and 7 ideas were ruled out without spending a run.</div>
+        <div><b>Change one thing.</b> Keep it only if F1 rises and more categories gain than lose.</div>
+        <div><b>7 of 15 runs used.</b> 8 held in reserve for the hidden test.</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">We gave ourselves a 15-run budget: one full fit and validation per run, one written hypothesis each. A change was kept only if the score went up and more categories gained than lost. Three kept, three dropped. Many ideas were ruled out from saved outputs, for free. Phase 1, before the budget, had 124 logged runs from v1 0.343 to v5 0.551.</aside>
+</section>
+
+<!-- ================================================================ 7 · EVALUATION -->
+<section class="slide s7" data-chapter="3">
+  <header>
+    <div class="eyebrow" data-a><span class="n">07</span><span class="rule"></span>How we test it · evaluation</div>
+    <h2 class="title" data-a style="--d:80">We judge it per incident: caught, missed, or false alarm.</h2>
+  </header>
+  <div class="grid g-7">
+    <div class="col">
+      <div class="chart" data-chart="explainer" data-w="960" data-h="250"></div>
+      <div class="metrics">
+        <div data-a style="--d:600"><div class="k">Precision</div><b data-count="0.63" data-dec="2">0.63</b><p>Of our alarms, how many were real?</p></div>
+        <div data-a style="--d:680"><div class="k">Recall</div><b data-count="0.56" data-dec="2">0.56</b><p>Of the real problems, how many did we catch? <span class="muted">65 of 116</span></p></div>
+        <div data-a style="--d:760"><div class="k">Event-F1 · main score</div><b class="hot" data-count="0.594" data-dec="3">0.594</b><p>One number that balances both.</p></div>
+        <div data-a style="--d:840"><div class="k">Detection delay</div><b>0 <small>steps</small></b><p>Median, from the marked anomaly to our first alarm. 66% within 10 steps.</p></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="k" data-a style="--d:300">Honest checks</div>
+      <ul class="checks">
+        <li data-a style="--d:380"><i></i><span><b>One setting</b> for all 58 signals. Nothing tuned per signal.</span></li>
+        <li data-a style="--d:460"><i></i><span><b>Hide a whole category</b>, tune on the rest: still <b>0.594</b>.</span></li>
+        <li data-a style="--d:540"><i></i><span><b>5 signals with no problems:</b> 0 alarms.</span></li>
+        <li data-a style="--d:620"><i></i><span><b>No “point adjustment”.</b> It lets random alarms score 0.92.</span></li>
+      </ul>
+      <div class="k mt" data-a style="--d:700">Event-F1 by category</div>
+      <div class="catbars"></div>
+    </div>
+  </div>
+  <aside class="notes">Event-F1 counts incidents, not points: any alarm inside a marked window catches it; an alarm outside every window is a false alarm. Precision is how many alarms were real; recall is how many problems we caught. The median first alarm lands 0 steps from the labelled anomaly point. Checks: one configuration for all signals; leaving out a whole category still gives 0.594; the 5 anomaly-free signals stay silent. We don't use point adjustment because with it, random alarms on 1% of points score 0.92.</aside>
+</section>
+
+<!-- ================================================================ 8 · RESULTS -->
+<section class="slide s8" data-chapter="3">
+  <header>
+    <div class="eyebrow" data-a><span class="n">08</span><span class="rule"></span>Results</div>
+    <h2 class="title" data-a style="--d:80">The <em>best of all 8 methods</em>, with 6 to 15× fewer false alarms.</h2>
+  </header>
+  <div class="kpis">
+    <div data-a style="--d:180"><b class="hot" data-count="0.594" data-dec="3">0.594</b><span>event-F1 across all 58 signals</span></div>
+    <div data-a style="--d:260"><b><span data-count="65">65</span><small> / 116</small></b><span>real problems caught</span></div>
+    <div data-a style="--d:340"><b data-count="39">39</b><span>false alarms in 365,558 values</span></div>
+    <div data-a style="--d:420"><b><span data-count="61">61</span><small> µs</small></b><span>per value, about 16,000 a second</span></div>
+  </div>
+  <div class="grid g-8">
+    <div class="col"><div class="k" data-a style="--d:500">Event-F1 · higher is better</div><div class="cmp" data-cmp="f1"></div></div>
+    <div class="col"><div class="k" data-a style="--d:500">False alarms · lower is better</div><div class="cmp" data-cmp="fp"></div></div>
+  </div>
+  <p class="cap wide" data-a style="--d:1100">Same data, same scoring: every model family named in the problem statement. Each of the 7 other methods was given its best possible threshold, picked using the answers. Sentinel uses one fixed setting and still wins.</p>
+  <aside class="notes">0.594 event-F1, the best of all 8 methods we tested: every model family in the problem statement, each with its threshold chosen using the answers. The runner-up, temporal clustering, gets 0.316; the autoencoder 0.272; an ensemble of all six 0.280. The others reach their recall only by raising 6 to 15 times more false alarms. And Sentinel runs at 61 microseconds per value: about 16,000 values a second on one core, the whole benchmark in about 7 seconds.</aside>
+</section>
+
+<!-- ================================================================ 9 · DEMO -->
+<section class="slide s9" data-chapter="3">
+  <header>
+    <div class="eyebrow" data-a><span class="n">09</span><span class="rule"></span>See it work · live demo</div>
+    <h2 class="title" data-a style="--d:80">Every alarm comes with a reason a person can read.</h2>
+  </header>
+  <div class="grid g-9">
+    <div class="col">
+      <figure class="window" data-a style="--d:180">
+        <div class="win-bar"><i></i><i></i><i></i><span>Sentinel live demo · replaying tweets about CVS</span></div>
+        <img src="assets/demo.webp" alt="Sentinel Streamlit demo: a Twitter signal streamed point by point, with alarms on the 3 labelled anomaly windows and the anomaly score against the adaptive threshold" width="1600" height="989">
+      </figure>
+      <p class="cap" data-a style="--d:400">Our app streams a signal point by point. Here: <b>3 of 3</b> real problems caught, 1 false alarm.</p>
+    </div>
+    <div class="col">
+      <div class="k" data-a style="--d:300">Evidence, exactly as Sentinel wrote it</div>
+      <div class="ev" data-a style="--d:420"><div class="ev-h"><span class="ev-w">Spike</span><span>5 Mar · 19:57</span><span>score 8.5</span></div><p>Value 50.00 is 99.4 scales above the learned baseline 0.32 (normal band −1.18 to 1.82).</p></div>
+      <div class="ev" data-a style="--d:540"><div class="ev-h"><span class="ev-w">New level</span><span>26 Mar · 14:07</span><span>score 5.1</span></div><p>Sustained level shift: recent mean 6.40 vs baseline 0.43 (8.2 scales above).</p></div>
+      <div class="ev" data-a style="--d:660"><div class="ev-h"><span class="ev-w">New shape</span><span>14 Apr · 21:02</span><span>score 6.0</span></div><p>The last 8 points form a pattern not seen before: the closest past match (1,750 steps ago) differs by 11.40 per point.</p></div>
+      <div class="csv" data-a style="--d:800"><span class="k">Saved for every value · predictions.csv</span><code>timestamp · value · score · NORMAL / ANOMALOUS · watcher · reason</code></div>
+    </div>
+  </div>
+  <aside class="notes">This is our Streamlit demo replaying tweets about CVS as a live stream. All three marked problems are caught. Every alarm carries a sentence from the watcher that fired: the value, what was expected, and how far off it is. The same evidence is saved for every value in predictions.csv. Run it with: streamlit run app.py.</aside>
+</section>
+
+<!-- ================================================================ 10 · LIMITS + CONCLUSION -->
+<section class="slide s10" data-chapter="4">
+  <header>
+    <div class="eyebrow" data-a><span class="n">10</span><span class="rule"></span>Honest limits · what's next</div>
+    <h2 class="title" data-a style="--d:80">What it can't do yet, and what comes next.</h2>
+  </header>
+  <div class="grid g-10">
+    <div class="col">
+      <div class="fig-head" data-a style="--d:160"><span class="k">False alarm check</span>Tweets mentioning IBM</div>
+      <div class="chart" data-chart="ibm" data-w="900" data-h="270"></div>
+      <div class="legend row" data-a style="--d:500">
+        <span><i class="sw beacon"></i>caught</span><span><i class="sw false"></i>false alarm</span><span><i class="sw band"></i>real anomaly</span>
+      </div>
+      <p class="cap" data-a style="--d:560">Most of our 39 false alarms are big bursts like these that nobody labelled.</p>
+    </div>
+    <div class="col lim">
+      <div class="k" data-a style="--d:240">Known limits</div>
+      <ul class="plain">
+        <li data-a style="--d:300"><b>“Seen before” spikes:</b> when an equally big spike came earlier, rarity can't tell them apart. 11 of 32 caught.</li>
+        <li data-a style="--d:360"><b>Short hourly signals:</b> little history to learn from. Online ads: 5 of 14.</li>
+        <li data-a style="--d:420"><b>Warm-up:</b> the first 300 values are for learning only.</li>
+      </ul>
+      <div class="k mt" data-a style="--d:480">Next</div>
+      <ul class="plain next">
+        <li data-a style="--d:540"><b>Learn from feedback:</b> “not a problem” stops that pattern alarming.</li>
+        <li data-a style="--d:600"><b>Weekly and holiday rhythm</b> for demand signals.</li>
+        <li data-a style="--d:660"><b>Watch related signals together:</b> CPU, disk and network of one machine.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="finale" data-a style="--d:800">
+    <p>Sentinel catches <b>65 of 116</b> real problems, live, at 16,000 values a second, and <em>explains every alarm</em>.</p>
+    <div class="thanks"><span>Thank you</span><span class="k">if/elif/else</span></div>
+  </div>
+  <aside class="notes">Name the limits before the judges do. “Seen before” spikes: when a bigger spike already happened unlabelled, no method can tell them apart from the data alone. Short hourly series have too little history. The first 300 values are for learning. Most false alarms are big Twitter bursts nobody labelled. Next: learning from operator feedback, weekly patterns, and related signals together. Close: 65 of 116, live, 16,000 values a second, every alarm explained.</aside>
+</section>
+
+<!-- ================================================================ CHROME -->
+<div class="chrome-top"><span class="wordmark">Sentinel</span><span class="count"><b id="cur">01</b> / 10</span></div>
+<nav class="rail" id="rail" aria-label="Slides"></nav>
+</main>
+</div>
+
+<div class="hint" id="hint">← → to move · click the timeline · <b>F</b> full screen · <b>T</b> light / dark · <b>N</b> notes</div>
+<div class="notes-panel" id="notes" hidden><div class="k">Speaker notes · <span id="notes-n"></span></div><p id="notes-text"></p></div>
+
+<script src="data.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>

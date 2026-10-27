@@ -1,0 +1,10 @@
+{
+ "points": 365558,
+ "series": 58,
+ "wall_seconds": 6.84,
+ "workers": 8,
+ "latency_us_p50": 60.6,
+ "latency_us_p99": 121.1,
+ "latency_us_mean": 62.3,
+ "throughput_points_per_sec_per_core": 16040
+}

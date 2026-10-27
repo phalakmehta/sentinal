@@ -1,0 +1,8 @@
+category,series,points,median_len,step_min,series_with_gaps,nan,windows,median_win_len,labelled_pct,tail_p999_median,acf_day_median,windows_in_warmup
+artificialNoAnomaly,5,20160,4032.0,5.0,0,0,0,0.0,0.0,2.1,0.925,0
+artificialWithAnomaly,6,24192,4032.0,5.0,0,0,6,403.0,10.0,16.2,0.81,0
+realAWSCloudwatch,17,67740,4032.0,5.0,7,0,30,201.0,9.3,22.6,0.11,1
+realAdExchange,6,9610,1624.0,60.0,6,0,14,53.0,10.0,16.55,0.41000000000000003,2
+realKnownCause,7,69561,7267.0,5.0,4,0,19,207.0,9.6,10.0,0.3,0
+realTraffic,7,15664,2495.0,5.0,7,0,14,104.0,10.0,13.5,0.01,0
+realTweets,10,158631,15855.5,5.0,0,0,33,397.0,9.9,20.15,0.14,0
