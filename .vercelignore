@@ -1,0 +1,5 @@
+# Vercel only needs the static site in web/ (deck at /, live demo at /demo/).
+# Everything else (code, data, predictions, decks) stays on GitHub but is not uploaded.
+/*
+!/web
+!/vercel.json

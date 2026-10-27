@@ -32,7 +32,9 @@ Clicking a dot or a chapter name on the bottom timeline also jumps there. On a p
 
 1. Push the repo to GitHub.
 2. On vercel.com: **Add New → Project**, pick the repo.
-3. Set **Root Directory** to `web`. Framework preset: **Other**. No build command.
+3. Leave every setting as it is. `vercel.json` in the repo already tells Vercel to serve the `web` folder
+   with no build step, and `.vercelignore` uploads only that folder. No environment variables are needed:
+   the site is plain HTML, CSS and JavaScript with no server and no keys.
 4. Deploy. The link opens on slide 1; add `#5` to the end to open slide 5.
 5. The live demo is in the same deploy at `/demo/` (see `05_web_demo.md`).
 

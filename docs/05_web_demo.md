@@ -56,7 +56,8 @@ Then open http://localhost:8080/demo/ (the deck is at http://localhost:8080/).
 
 ## Put it online (Vercel)
 
-Same project as the deck: root directory `web`, framework **Other**, no build command.
+Same project as the deck, no settings to change: `vercel.json` serves the `web` folder with no build step and
+no environment variables. Open it as `/demo/` with the trailing slash (Vercel adds it automatically).
 The deck is at `/`, the demo at `/demo/`. Size is about 10 MB, mostly the CSVs.
 
 ## When the data or detector changes
